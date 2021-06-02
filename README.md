@@ -19,7 +19,7 @@
 空いた時間に投稿画像を見たり、いいねやコメントでユーザー同士のコミュニケーションを楽しむ。
 
 ## 設計書
-
+ワイヤーフレーム：https://drive.google.com/file/d/1uqAJcbEqFWjU3ZYS3w9qO5_GiKJe--yI/view?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1bsTQFALETAqbOK16tfoBhx-Z_YkoiaoQ10dfZgg9UGY/edit?usp=sharing
