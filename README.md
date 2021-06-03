@@ -7,8 +7,7 @@
 シンプルなデザインで直感的に操作できるよう、UIにこだわりたいです。
 
 ### テーマを選んだ理由
-ビフォーアフター写真は短い時間で楽しめるコンテンツであるとともに、類似サービスが無かったため。
-
+ビフォーアフター写真は短い時間で楽しめるコンテンツであるとともに、類似サービスが無かったため。  
 また、別途、パーソナルスタイリストとのマッチングサービスを構想しており、
 そのメインコンテンツとして、ビフォーアフター写真の投稿フィードを検討しているため。
 
@@ -19,10 +18,10 @@
 空いた時間に投稿画像を見たり、いいねやコメントでユーザー同士のコミュニケーションを楽しむ。
 
 ## 設計書
-ワイヤーフレーム：https://drive.google.com/file/d/1uqAJcbEqFWjU3ZYS3w9qO5_GiKJe--yI/view?usp=sharing
-ER図：https://drive.google.com/file/d/1xP1HCgfS071L_tSanMabtm4FiyVICgKr/view?usp=sharing
-テーブル定義書：https://drive.google.com/file/d/1-Fwcvk-ojLLSU1FFG6s87wZKJyH_wDud/view?usp=sharing
-AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr4Qmqo/view?usp=sharing
+ワイヤーフレーム：https://drive.google.com/file/d/1uqAJcbEqFWjU3ZYS3w9qO5_GiKJe--yI/view?usp=sharing  
+ER図：https://drive.google.com/file/d/1xP1HCgfS071L_tSanMabtm4FiyVICgKr/view?usp=sharing  
+テーブル定義書：https://drive.google.com/file/d/1-Fwcvk-ojLLSU1FFG6s87wZKJyH_wDud/view?usp=sharing  
+AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr4Qmqo/view?usp=sharing  
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1bsTQFALETAqbOK16tfoBhx-Z_YkoiaoQ10dfZgg9UGY/edit?usp=sharing
