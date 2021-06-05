@@ -70,3 +70,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'kaminari','~> 1.2.1'
 gem 'rubocop-airbnb'
 gem 'pry-rails'
+
+group :production do
+  gem 'mysql2'
+end
