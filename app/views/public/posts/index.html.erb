@@ -1,0 +1,8 @@
+<div class="post-items">
+  <% @posts.each do |post| %>
+    <%= attachment_image_tag post.user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg" %>
+    <%= post.user.name %>
+    <%= attachment_image_tag post, :before_image, :fill, 600, 100, fallback: "no_image.jpg" %>
+    <%= attachment_image_tag post, :after_image, :fill, 600, 100, fallback: "no_image.jpg" %>
+  <% end %>
+</div>

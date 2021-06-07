@@ -32,7 +32,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to root_path do %>
+            <%= link_to posts_path do %>
               <i class="fas fa-search">検索</i>
             <% end %>
           </li>
@@ -51,6 +51,11 @@
               <i class="fas fa-users">ユーザー</i>
             <% end %>
           </li>
+          <% if user_signed_in? %>
+          <li>
+            <%= render 'layouts/form', post: @post %>
+          </li>
+          <% end %>
         </ul>
       </nav>
 

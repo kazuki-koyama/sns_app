@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   scope module: :admin do
     devise_for :admins, controllers: {
       sessions:      'admin/admins/sessions',
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root 'homes#top'
+    resources :posts, only: [:index, :create, :update, :destroy]
     devise_for :users, controllers: {
       sessions:      'public/users/sessions',
       passwords:     'public/users/passwords',
