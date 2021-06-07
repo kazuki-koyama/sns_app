@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SnsApp</title>
+    <title>Change</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,63 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="fixed-top">
+      <div class="headnav text-right">
+        <% if user_signed_in? %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "btn btn-primary" do %>
+            <i class="fas fa-sign-in-alt">Log in</i>
+          <% end %>
+        <% end %>
+      </div>
+    </header>
+
+    <div class="wrapper mt-5">
+
+      <nav class="sidenav">
+        <ul>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-home">ホーム</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-search">検索</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+              <i class="far fa-bell">通知</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+              <i class="far fa-bookmark">ブックマーク</i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-users">ユーザー</i>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="contents">
+        <%= yield %>
+      </main>
+
+      <aside>
+        <ul>
+          <li>recommend user1</li>
+          <li>recommend user1</li>
+          <li>recommend user1</li>
+          <li>recommend user1</li>
+        </ul>
+      </aside>
+
+    </div>
   </body>
 </html>

@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  scope module: :public do
-    root 'homes#top'
-  end
-  namespace :admin do
+
+
+  scope module: :admin do
     devise_for :admins, controllers: {
       sessions:      'admin/admins/sessions',
       passwords:     'admin/admins/passwords',
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    root 'homes#top'
     devise_for :users, controllers: {
       sessions:      'public/users/sessions',
       passwords:     'public/users/passwords',
