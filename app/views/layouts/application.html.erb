@@ -66,12 +66,12 @@
       </main>
 
       <aside>
-        <ul>
-          <li>recommend user1</li>
-          <li>recommend user1</li>
-          <li>recommend user1</li>
-          <li>recommend user1</li>
-        </ul>
+        <h5>おすすめ</h5>
+        <%= link_to "すべて見る", users_path 
+        <% @users.first(5).each do |user| %>
+          <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
+          <%= user.name %>
+        <% end %>
       </aside>
 
     </div>
