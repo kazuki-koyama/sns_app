@@ -53,8 +53,13 @@
           </li>
           <% if user_signed_in? %>
           <li>
-            <%= render 'layouts/form', post: @post %>
+            <%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %>
           </li>
+          <!-- 新規投稿のモーダルウィンドウ -->
+          <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+          <!--<li>-->
+          <!--  <%#= render 'layouts/form', post: @post %>-->
+          <!--</li>-->
           <% end %>
         </ul>
       </nav>

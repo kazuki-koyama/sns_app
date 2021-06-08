@@ -1,6 +1,10 @@
 class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+  def new
+    @post = Post.new
+  end
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
