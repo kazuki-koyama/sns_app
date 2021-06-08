@@ -1,0 +1,5 @@
+<div class="posts">
+  <% @posts.each do |post| %>
+    <%= render "post_item", post: post %>
+  <% end %>
+</div>
