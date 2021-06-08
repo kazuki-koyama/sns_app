@@ -1,13 +1,5 @@
-<% @posts.each do |post| %>
-  <div class="post-items mb-5">
-    <div class="post-header">
-      <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
-      <%= post.user.name %>
-      <% if post.user == current_user %>
-        <%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "destroy_post_#{post.id}" %>
-      <% end %>
-    </div>
-    <%= attachment_image_tag(post, :before_image, :limit, 600, 750) %>
-    <%= attachment_image_tag(post, :after_image,  :limit, 600, 750) %>
-  </div>
-<% end %>
+<div class="posts">
+  <% @posts.each do |post| %>
+    <%= render "post_item", post: post %>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root 'homes#top'
-    resources :posts, only: [:new, :index, :create, :update, :destroy]
+    resources :posts, only: [:new, :create, :index, :edit, :update, :destroy]
     devise_for :users, controllers: {
       sessions:      'public/users/sessions',
       passwords:     'public/users/passwords',
