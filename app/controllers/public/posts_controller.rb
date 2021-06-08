@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def create
     @post = Post.new(post_params)
@@ -18,11 +19,20 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
+    redirect_to posts_path
   end
 
   private
 
   def post_params
     params.require(:post).permit(:before_image, :after_image, :caption)
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path
+    end
   end
 end
