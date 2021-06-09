@@ -1,5 +1,5 @@
 <% if @status == 'success' %>
-$(".posts").prepend("<%= j(render("post_item", post: @post)) %>");
+$(".posts").prepend("<%= j(render("post-item", post: @post)) %>");
 <%  elsif @status == 'fail' %>
 alert('error!');
 <% end %>
