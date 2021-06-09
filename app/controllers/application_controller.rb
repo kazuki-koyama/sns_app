@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
   def set_post
     @post = Post.new
   end
-  
+
   def set_users
     @users = User.all.order(created_at: :desc)
+    @user = current_user
   end
 end
