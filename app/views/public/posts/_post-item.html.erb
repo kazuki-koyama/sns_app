@@ -10,10 +10,26 @@
           <% end %>
         <% end %>
       </div>
+
       <%= attachment_image_tag(post, :before_image, :limit, 600, 750) %>
       <%= attachment_image_tag(post, :after_image,  :limit, 600, 750) %>
+
       <div id="post_<%= post.id %>" class="post-footer">
-        <span class="like-btn"><%= render "public/likes/like-btn", post: post %></span>
+        <span class="like-btn">
+          <%= render "public/likes/like-btn", post: post %>
+        </span>
+        
+        <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i> </br>
         <%= post.caption %>
+        
+        <span class="comments">
+          <%= render "public/comments/index", post: post %>
+        </span> </br>
+        
+        <span class="small text-muted"><%= post.set_date %></span>
+        <%= form_with model:[post, @comment] do |f| %>
+          <%= f.text_area :comment, size: "70x2", placeholder: "コメントを追加" %>
+          <%= f.submit "投稿" %>
+        <% end %>
       </div>
     </div>

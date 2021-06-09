@@ -1,0 +1,19 @@
+<% post.comments.each do |comment| %>
+  <% comment_user = comment.user %>
+  <tr>
+  	<td>
+  		<%= link_to user_path(comment_user), class: "user_#{comment_user.id}" do %>
+    		<%= attachment_image_tag comment_user, :profile_image, size: "22x22", fallback: "no_image.jpg", size: "22x22" %><br>
+    		<%= comment_user.name %>
+  		<% end %>
+  	</td>
+  	<td><%= comment.comment %></td>
+  	<% if current_user == comment_user %>
+    	<td>
+    	  <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true do %>
+      	  <i class="far fa-trash-alt"></i>
+    	  <% end %>
+    	</td>
+  	<% end %>
+  </tr>
+<% end %>
