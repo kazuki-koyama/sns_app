@@ -2,7 +2,7 @@
       <div class="post-header">
         <%= link_to user_path(post.user) do %>
           <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
-          <%= post.user.name %>
+          <span class="font-weight-bold"><%= post.user.name %></span>
         <% end %>
         <% if post.user == current_user %>
           <%= link_to edit_post_path(post) do %>
@@ -10,10 +10,26 @@
           <% end %>
         <% end %>
       </div>
+
       <%= attachment_image_tag(post, :before_image, :limit, 600, 750) %>
       <%= attachment_image_tag(post, :after_image,  :limit, 600, 750) %>
+
       <div id="post_<%= post.id %>" class="post-footer">
-        <span class="like-btn"><%= render "public/likes/like-btn", post: post %></span>
-        <%= post.caption %>
+        <span class="like-btn">
+          <%= render "public/likes/like-btn", post: post %>
+        </span>
+
+        <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i> </br>
+        <%= post.caption %> </br>
+
+        <span class="comments">
+          <%= render "public/comments/index", post: post %>
+        </span> </br>
+
+        <span class="small text-muted"><%= post.set_date %></span>
+        <%= form_with model:[post, @comment] do |f| %>
+          <%= f.text_area :comment, size: "70x2", placeholder: "コメントを追加" %>
+          <%= f.submit "投稿" %>
+        <% end %>
       </div>
     </div>

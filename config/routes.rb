@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :users, only: [:show, :index, :edit, :update]
     resources :posts, only: [:new, :create, :index, :edit, :update, :destroy] do
-      resource :likes, only: [:create, :destroy]
+      resource  :likes, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     devise_for :users, controllers: {
