@@ -1,7 +1,9 @@
     <div class="post-item mb-5">
       <div class="post-header">
-        <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
-        <%= post.user.name %>
+        <%= link_to user_path(post.user) do %>
+          <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
+          <%= post.user.name %>
+        <% end %>
         <% if post.user == current_user %>
           <%= link_to edit_post_path(post) do %>
            <i class="far fa-edit"></i>

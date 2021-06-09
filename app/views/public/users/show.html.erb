@@ -1,0 +1,10 @@
+<%= attachment_image_tag @user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+<%= @user.name %>
+投稿<%= @user.posts.count %>件
+<%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" %>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+    <%= render "public/posts/post_item", post: post %>
+  <% end %>
+</div>
