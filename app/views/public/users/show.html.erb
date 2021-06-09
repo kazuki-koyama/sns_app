@@ -17,7 +17,7 @@
         <td>
           <%= link_to "フォロワー#{@user.followers.count}人", user_followers_path(@user) %>
         </td>
-        <td>
+        <td id="followings">
           <%= link_to "フォロー中#{@user.followings.count}人", user_followings_path(@user) %>
         </td>
       </tr>
