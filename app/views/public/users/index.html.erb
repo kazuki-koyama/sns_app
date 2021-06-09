@@ -1,8 +1,17 @@
 <%= link_to "←", 'javascript:history.back()' %>
 <h5>おすすめ</h5>
-<% @users.each do |user| %>
-  <%= link_to user_path(user) do %>
-    <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
-    <%= user.name %>
-  <% end %>
-<% end %>
+<table class='table'>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr id="user_<%= user.id %>">
+        <td>
+          <%= link_to user_path(user) do %>
+            <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
+          <% end %>
+        </td>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td class="follow-btn"><%= render "follow-btn", user: user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
