@@ -28,7 +28,7 @@
 
     <span class="small text-muted"><%= post.set_date %></span>
     <%= form_with model:[post, @comment] do |f| %>
-      <%= f.text_area :comment, size: "70x2", placeholder: "コメントを追加" %>
+      <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加" %>
       <%= f.submit "投稿" %>
     <% end %>
   </div>
