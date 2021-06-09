@@ -1,0 +1,6 @@
+<h5>フォロー中</h5>
+<% if @users.exists? %>
+  <%= render 'public/users/index', users: @users %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
