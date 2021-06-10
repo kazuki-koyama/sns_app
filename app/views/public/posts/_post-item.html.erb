@@ -23,7 +23,7 @@
       <%= render "public/favorites/favorite-btn", post: post %>
     </span> </br>
 
-    <%= post.caption %> </br>
+    <%= render_with_hashtags(post.caption) %> </br>
 
     <span class="comments">
       <%= render "public/comments/index", post: post %>

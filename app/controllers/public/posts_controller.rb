@@ -38,6 +38,13 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def hashtag
+    @user = current_user
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @posts = @tag.posts
+    @comment = Comment.new
+  end
+
   private
 
   def post_params
