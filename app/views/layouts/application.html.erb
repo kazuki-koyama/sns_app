@@ -26,38 +26,15 @@
 
       <nav class="sidenav">
         <ul>
-          <li>
-            <%= link_to root_path do %>
-              <i class="fas fa-home">ホーム</i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to posts_path do %>
-              <i class="fas fa-search">検索</i>
-            <% end %>
-          </li>
-
+          <li><%= link_to "ホーム", root_path, class: "fas fa-home" %></li>
+          <li><%= link_to  "検索", posts_path, class: "fas fa-search" %></li>
           <% if user_signed_in? %>
-          <li>
-            <%= link_to root_path do %>
-              <i class="far fa-bell">通知</i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to root_path do %>
-              <i class="far fa-bookmark">ブックマーク</i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to user_path(current_user) do %>
-              <i class="far fa-user">マイページ</i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %>
-          </li>
-          <!-- 新規投稿作成のモーダルウィンドウの表示領域 -->
-          <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+            <li><%= link_to "通知", root_path, class: "far fa-bell" %></li>
+            <li><%= link_to "ブックマーク", favorites_user_path(@user), class: "far fa-bookmark" %></li>
+            <li><%= link_to "マイページ", user_path(current_user), class: "far fa-user" %></li>
+            <li><%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %></li>
+            <!-- 新規投稿作成のモーダルウィンドウの表示領域 -->
+            <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
           <% end %>
         </ul>
       </nav>
@@ -75,9 +52,11 @@
               <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
               <%= user.name %>
             <% end %>
-            <span class="follow-btn">
-              <%= render "public/users/follow-btn", user: user %>
-            </span>
+            <% if user_signed_in? %>
+              <span class="follow-btn">
+                <%= render "public/users/follow-btn", user: user %>
+              </span>
+            <% end %>
           </div>
         <% end %>
       </aside>

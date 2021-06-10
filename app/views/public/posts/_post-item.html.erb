@@ -5,9 +5,7 @@
       <span class="font-weight-bold"><%= post.user.name %></span>
     <% end %>
     <% if post.user == current_user %>
-      <%= link_to edit_post_path(post) do %>
-       <i class="far fa-edit"></i>
-      <% end %>
+      <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
     <% end %>
   </div>
 
@@ -19,15 +17,20 @@
       <%= render "public/likes/like-btn", post: post %>
     </span>
 
-    <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i> </br>
+    <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i>
+
+    <span class="favorite-btn">
+      <%= render "public/favorites/favorite-btn", post: post %>
+    </span> </br>
+
     <%= post.caption %> </br>
 
     <span class="comments">
       <%= render "public/comments/index", post: post %>
-    </span> </br>
+    </span>
 
     <span class="small text-muted"><%= post.set_date %></span>
-    <%= form_with model:[post, @comment] do |f| %>
+    <%= form_with model:[post, comment] do |f| %>
       <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加" %>
       <%= f.submit "投稿" %>
     <% end %>

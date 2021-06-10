@@ -1,6 +1,6 @@
 <% if @status == 'success' %>
-$(".posts").prepend("<%= j(render("post-item", post: @post)) %>");
-<%  elsif @status == 'fail' %>
-alert('error!');
+  $(".posts").prepend("<%= j(render "post-item", { post: @post, comment: @comment }) %>");
+<% elsif @status == 'fail' %>
+  alert('error!');
 <% end %>
 $("#new-post").modal("hide");

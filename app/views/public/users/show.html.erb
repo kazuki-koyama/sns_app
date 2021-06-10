@@ -1,32 +1,7 @@
-<%= attachment_image_tag @user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
-
-<table class='table table-borderless'>
-  <tbody>
-      <tr id="user_<%= @user.id %>">
-        <td><%= @user.name %></td>
-        <td colspan="2" class="follow-btn">
-          <% if @user != current_user %>
-            <%= render "follow-btn", user: @user %>
-          <% else %>
-            <%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>投稿<%= @user.posts.count %>件</td>
-        <td>
-          <%= link_to "フォロワー#{@user.followers.count}人", user_followers_path(@user) %>
-        </td>
-        <td id="followings">
-          <%= link_to "フォロー中#{@user.followings.count}人", user_followings_path(@user) %>
-        </td>
-      </tr>
-  </tbody>
-</table>
-
+<%= render "user-info", user: @user %>
 
 <div class="posts">
   <% @posts.each do |post| %>
-    <%= render "public/posts/post-item", post: post %>
+    <%= render "public/posts/post-item", { post: post, comment: @comment } %>
   <% end %>
 </div>

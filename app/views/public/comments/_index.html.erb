@@ -6,9 +6,7 @@
 	<% end %>
 	<%= comment.comment %>
 	<% if current_user == comment_user %>
-  	  <%= link_to post_comment_path(comment.post_id, comment.id), method: :delete, remote: true do %>
-    	  <i class="far fa-trash-alt"></i>
-  	  <% end %>
+ 	  <%= link_to "", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %>
 	<% end %>
 	</br>
 <% end %>

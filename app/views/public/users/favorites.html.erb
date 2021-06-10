@@ -1,0 +1,9 @@
+<%= render "user-info", user: @user %>
+
+<div class="posts">
+  <% if @favorite_posts.present? %>
+    <% @favorite_posts.each do |post| %>
+      <%= render "public/posts/post-item", { post: post, comment: @comment } %>
+    <% end %>
+  <% end %>
+</div>
