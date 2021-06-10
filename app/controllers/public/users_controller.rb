@@ -24,6 +24,7 @@ class Public::UsersController < ApplicationController
   end
 
   def favorites
+    @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
     @comment = Comment.new
