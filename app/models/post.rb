@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :likes,     dependent: :destroy
-  has_many :comments,  dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :likes,         dependent: :destroy
+  has_many :comments,      dependent: :destroy
+  has_many :favorites,     dependent: :destroy
+  has_many :hashtag_posts, dependent: :destroy
+  has_many :hashtags, through: :hashtag_posts
 
   attachment :before_image
   attachment :after_image
