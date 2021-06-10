@@ -5,9 +5,7 @@
       <span class="font-weight-bold"><%= post.user.name %></span>
     <% end %>
     <% if post.user == current_user %>
-      <%= link_to edit_post_path(post) do %>
-       <i class="far fa-edit"></i>
-      <% end %>
+      <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
     <% end %>
   </div>
 
