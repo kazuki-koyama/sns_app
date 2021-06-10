@@ -52,9 +52,11 @@
               <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
               <%= user.name %>
             <% end %>
-            <span class="follow-btn">
-              <%= render "public/users/follow-btn", user: user %>
-            </span>
+            <% if user_signed_in? %>
+              <span class="follow-btn">
+                <%= render "public/users/follow-btn", user: user %>
+              </span>
+            <% end %>
           </div>
         <% end %>
       </aside>

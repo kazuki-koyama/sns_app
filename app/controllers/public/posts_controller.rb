@@ -6,6 +6,7 @@ class Public::PostsController < ApplicationController
   end
 
   def create
+    @comment = Comment.new
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
