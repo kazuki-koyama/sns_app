@@ -9,8 +9,8 @@
     <% end %>
   </div>
 
-  <%= attachment_image_tag(post, :before_image, :limit, 600, 750) %>
-  <%= attachment_image_tag(post, :after_image,  :limit, 600, 750) %>
+  <%= attachment_image_tag post, :before_image, class: "post-image" %>
+  <%= attachment_image_tag post, :after_image, class: "post-image" %>
 
   <div id="post_<%= post.id %>" class="post-footer">
     <span class="like-btn">
