@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       registrations: 'public/users/registrations'
     }
     root 'homes#top'
+    get '/post/hashtag/:name' => 'posts#hashtag'
     resources :users, only: [:show, :index, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
     	get 'followings' => 'relationships#followings', as: 'followings'
