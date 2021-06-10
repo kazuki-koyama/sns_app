@@ -24,14 +24,8 @@
   </tbody>
 </table>
 
-
 <div class="posts">
   <% @posts.each do |post| %>
     <%= render "public/posts/post-item", post: post %>
-  <% end %>
-  <% if @favorite_posts.present? %>
-    <% @favorite_posts.each do |post| %>
-      <%= render "public/posts/post-item", post: post %>
-    <% end %>
   <% end %>
 </div>

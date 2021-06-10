@@ -1,13 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :favorites]
 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
     @comment = Comment.new
-    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
   end
 
   def index
@@ -23,6 +21,12 @@ class Public::UsersController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def favorites
+    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+    @comment = Comment.new
   end
 
   private

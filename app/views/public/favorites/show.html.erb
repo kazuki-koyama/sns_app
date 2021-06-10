@@ -1,0 +1,29 @@
+<%= attachment_image_tag current_user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+
+<table class='table table-borderless'>
+  <tbody>
+      <tr>
+        <td><%= current_user.name %></td>
+        <td colspan="2" class="follow-btn">
+          <%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" %>
+        </td>
+      </tr>
+      <tr>
+        <td>投稿<%= current_user.posts.count %>件</td>
+        <td>
+          <%= link_to "フォロワー#{current_user.followers.count}人", user_followers_path(@user) %>
+        </td>
+        <td id="followings">
+          <%= link_to "フォロー中#{current_user.followings.count}人", user_followings_path(@user) %>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+<div class="posts">
+  <% if @favorite_posts.present? %>
+    <% @favorite_posts.each do |post| %>
+      <%= render "public/posts/post-item", post: post %>
+    <% end %>
+  <% end %>
+</div>
