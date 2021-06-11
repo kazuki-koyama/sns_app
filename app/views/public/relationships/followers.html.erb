@@ -1,4 +1,4 @@
-<h5>フォロワー</h5>
+<% provide(:title, "フォロワー") %>
 <% if @users.exists? %>
   <%= render 'public//users/index', users: @users %>
 <% else %>

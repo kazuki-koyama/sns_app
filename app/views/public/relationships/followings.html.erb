@@ -1,4 +1,5 @@
-<h5>フォロー中</h5>
+<%= link_to "←", 'javascript:history.back()' %>
+<% provide(:title, "フォロー中") %>
 <% if @users.exists? %>
   <%= render 'public/users/index', users: @users %>
 <% else %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Change</title>
+    <title><%= yield(:title) %> | Change</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -40,6 +40,7 @@
       </nav>
 
       <main class="contents">
+        <h5><%= yield(:title) %></h5>
         <%= yield %>
       </main>
 

@@ -1,3 +1,4 @@
+<% provide(:title, "検索") %>
 <div class="posts">
   <% @posts.each do |post| %>
     <%= render "post-item", { post: post, comment: @comment } %>
