@@ -4,7 +4,6 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -40,7 +39,12 @@
       </nav>
 
       <main class="contents">
-        <h5><%= yield(:title) %></h5>
+        <h5>
+          <% if request.path.include?("edit") || request.path.include?("follow") %>
+            <%= link_to "←", 'javascript:history.back()' %>
+          <% end %>
+          <%= yield(:title) %>
+        </h5>
         <%= yield %>
       </main>
 
