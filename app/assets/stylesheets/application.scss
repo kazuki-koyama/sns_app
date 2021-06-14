@@ -33,6 +33,10 @@ a {
   text-decoration: none;
 }
 
+header {
+  height: 48px;
+}
+
 .wrapper {
   display: flex;
   align-items: stretch;
@@ -53,7 +57,14 @@ aside {
   width: 275px;
 }
 
-.post-image img {
+.header-title {
+  position: fixed;
+  width: 600px;
+  padding: 5px;
+  background: #fff;
+}
+
+.post-images img {
   width: 300px;
 }
 

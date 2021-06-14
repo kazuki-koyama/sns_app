@@ -1,4 +1,4 @@
-<div class="post-item mb-5">
+<div class="post-item mb-5 border">
   <div class="post-header">
     <%= link_to user_path(post.user) do %>
       <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
@@ -9,9 +9,13 @@
     <% end %>
   </div>
 
-  <div class="post-image d-flex">
-    <%= attachment_image_tag post, :before_image %>
-    <%= attachment_image_tag post, :after_image %>
+  <div class="post-images d-flex align-items-center">
+    <div>
+      <%= attachment_image_tag(post, :before_image ) %>
+    </div>
+    <div>
+      <%= attachment_image_tag(post, :after_image ) %>
+    </div>
   </div>
 
   <div id="post_<%= post.id %>" class="post-footer">

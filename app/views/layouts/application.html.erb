@@ -9,14 +9,12 @@
   </head>
 
   <body>
-    <header class="fixed-top">
+    <header class="fixed-top bg-white">
       <div class="headnav text-right">
         <% if user_signed_in? %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to new_user_session_path, class: "btn btn-primary" do %>
-            <i class="fas fa-sign-in-alt">Log in</i>
-          <% end %>
+          <%= link_to "Log in", new_user_session_path, class: "fas fa-sign-in-alt" %>
         <% end %>
       </div>
     </header>
@@ -45,7 +43,9 @@
           <% end %>
           <%= yield(:title) %>
         </h5>
-        <%= yield %>
+        <div class="mt-5">
+          <%= yield %>
+        </div>
       </main>
 
       <aside>
