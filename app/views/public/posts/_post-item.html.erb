@@ -13,8 +13,8 @@
 
   <%= link_to post_path(post), remote: true do %>
     <ul class="post-images d-flex align-items-center border-top border-bottom">
-      <li><%= attachment_image_tag(post, :before_image) %></li>
-      <li><%= attachment_image_tag(post, :after_image) %></li>
+      <li class="slider"><%= attachment_image_tag(post, :before_image) %></li>
+      <li class="slider"><%= attachment_image_tag(post, :after_image) %></li>
     </ul>
   <% end %>
   <!-- 投稿詳細モーダルウィンドウの表示領域 -->
