@@ -1,0 +1,10 @@
+<% if @posts.present? %>
+  <h5><%= @hashtag %></h5>
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <%= render "public/posts/post-item", { post: post, comment: @comment } %>
+    <% end %>
+  </div>
+<% else %>
+  <%= render 'public/users/index', users: @users %>
+<% end %>
