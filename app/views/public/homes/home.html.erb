@@ -1,0 +1,6 @@
+<div class="posts jscroll">
+  <% @posts.each do |post| %>
+    <%= render "public/posts/post-item", { post: post, comment: @comment } %>
+  <% end %>
+  <%= link_to_next_page @posts, "next >>", class: "next" %>
+</div>

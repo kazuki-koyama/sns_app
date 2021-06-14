@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       registrations: 'public/users/registrations'
     }
     root 'homes#top'
+    get 'home' => 'homes#home'
     get '/post/hashtag/:name' => 'posts#hashtag'
     get 'search' => 'searches#search'
     resources :users, only: [:show, :index, :edit, :update] do
