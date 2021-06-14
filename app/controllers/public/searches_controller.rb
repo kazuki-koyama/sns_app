@@ -4,12 +4,13 @@ class Public::SearchesController < ApplicationController
       redirect_back(fallback_location: root_path)
     elsif (params[:keyword]).include?('#')
       @posts = Hashtag.search(params[:keyword]).order('created_at DESC')
-      # 完全一致以外はリダイレクト
-      redirect_back(fallback_location: root_path) if @posts[0].nil?
       @hashtag = (params[:keyword])
       @comment = Comment.new
+    elsif (params[:keyword]).include?('#') && @posts.nil?
+      @hashtag = (params[:keyword])
     else
       @users = User.search(params[:keyword]).order('created_at DESC')
+      @keyword = (params[:keyword])
     end
   end
 end

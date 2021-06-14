@@ -1,10 +1,13 @@
+<% provide(:title, "#{@hashtag}") %>
 <% if @posts.present? %>
-  <h5><%= @hashtag %></h5>
   <div class="posts">
     <% @posts.each do |post| %>
       <%= render "public/posts/post-item", { post: post, comment: @comment } %>
     <% end %>
   </div>
+<% elsif @hashtag.present? %>
+  <p>一致するハッシュタグがありません</p>
 <% else %>
+  <% provide(:title, "Search results for \"#{@keyword}\"") %>
   <%= render 'public/users/index', users: @users %>
 <% end %>

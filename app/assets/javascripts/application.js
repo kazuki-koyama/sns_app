@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery.jscroll.min.js
+//= require bxslider
 //= require popper
 //= require bootstrap-sprockets
 
@@ -18,3 +20,35 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $('.jscroll').jscroll({
+    contentSelector: '.jscroll',
+    nextSelector: 'a.next',
+    loadingHtml: '読み込み中'
+  });
+});
+
+// $(document).ready(function() {
+$('.slider').on('click', function() {
+  $('.bxslider').bxSlider({
+    // pager: true,
+    // controls: true,
+    // moveSlides: 1,
+    // maxSlides: 2,
+    nextText: "→",
+    prevText: "←",
+    slideWidth: 300
+  });
+});
+
+// let slider1 = new SliderInit('.slider1','.slide-counter1','.slide-counter1 span');
+// // モーダルの設定
+// let sliderModalSet1 = {
+// el: '.sliderModal1',
+// sliderModaleEl: '.slider1 li a',
+// sliderModaleWrap: '.sliderModalWrap1',
+// mode: 'fade',
+// speed: 400
+// }
+// let sliderModal1 = new SliderModalInit(sliderModalSet1);

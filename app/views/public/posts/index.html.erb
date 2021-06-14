@@ -1,12 +1,13 @@
-<div class="search-form">
+<div class="search-form text-center">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword %>
-    <%= f.submit '検索' %>
+    <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
+    <% f.submit %>
   <% end %>
 </div>
 
-<div class="posts">
+<div class="posts jscroll">
   <% @posts.each do |post| %>
     <%= render "post-item", { post: post, comment: @comment } %>
   <% end %>
+  <%= link_to_next_page @posts, "next >>", class: "next" %>
 </div>

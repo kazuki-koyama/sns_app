@@ -9,14 +9,12 @@
   </head>
 
   <body>
-    <header class="fixed-top">
+    <header class="fixed-top bg-white">
       <div class="headnav text-right">
         <% if user_signed_in? %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to new_user_session_path, class: "btn btn-primary" do %>
-            <i class="fas fa-sign-in-alt">Log in</i>
-          <% end %>
+          <%= link_to "Log in", new_user_session_path, class: "fas fa-sign-in-alt" %>
         <% end %>
       </div>
     </header>
@@ -25,14 +23,14 @@
 
       <nav class="sidenav">
         <ul>
-          <li><%= link_to "ホーム", root_path, class: "fas fa-home" %></li>
+          <li><%= link_to "ホーム", home_path, class: "fas fa-home" %></li>
           <li><%= link_to  "検索", posts_path, class: "fas fa-search" %></li>
           <% if user_signed_in? %>
             <li><%= link_to "通知", root_path, class: "far fa-bell" %></li>
             <li><%= link_to "ブックマーク", favorites_user_path(@user), class: "far fa-bookmark" %></li>
             <li><%= link_to "マイページ", user_path(current_user), class: "far fa-user" %></li>
             <li><%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %></li>
-            <!-- 新規投稿作成のモーダルウィンドウの表示領域 -->
+            <!-- 新規投稿作成モーダルウィンドウの表示領域 -->
             <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
           <% end %>
         </ul>
@@ -40,12 +38,14 @@
 
       <main class="contents">
         <h5>
-          <% if request.path.include?("edit") || request.path.include?("follow") %>
+          <% if request.path.include?("edit") || request.path.include?("follow") || request.path.include?("search") %>
             <%= link_to "←", 'javascript:history.back()' %>
           <% end %>
           <%= yield(:title) %>
         </h5>
-        <%= yield %>
+        <div class="mt-5">
+          <%= yield %>
+        </div>
       </main>
 
       <aside>

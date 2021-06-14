@@ -10,9 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bxslider
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
@@ -31,6 +33,10 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+header {
+  height: 48px;
 }
 
 .wrapper {
@@ -53,8 +59,24 @@ aside {
   width: 275px;
 }
 
-.post-image {
+.header-title {
+  position: fixed;
   width: 600px;
+  padding: 5px;
+  background: #fff;
 }
 
-.heart_red {color:#e54747;}
+.post-images img {
+  width: 299px;
+}
+
+.heart_red {
+  color: #e54747;
+}
+
+.modal-dialog-fluid {
+  max-width: inherit;
+  width: 98%;
+  margin-left: 15px;
+  padding: 0px;
+}

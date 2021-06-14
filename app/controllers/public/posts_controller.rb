@@ -7,8 +7,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
     if @post.save
       @status = "success"
     else
@@ -16,8 +15,13 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+  end
+
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.order(created_at: :desc).page(params[:page]).without_count.per(10)
     @comment = Comment.new
   end
 
