@@ -40,7 +40,7 @@
 
       <main class="contents">
         <h5>
-          <% if request.path.include?("edit") || request.path.include?("follow") %>
+          <% if request.path.include?("edit") || request.path.include?("follow") || request.path.include?("search") %>
             <%= link_to "←", 'javascript:history.back()' %>
           <% end %>
           <%= yield(:title) %>
