@@ -4,9 +4,11 @@
       <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
       <span class="font-weight-bold"><%= post.user.name %></span>
     <% end %>
+    <span class="small text-muted"> - <%= time_ago_in_words(post.created_at) %>前</span>
     <% if post.user == current_user %>
       <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
-    <% end %>
+    <% end %> </br>
+    <%= render_with_hashtags(post.caption) %>
   </div>
 
   <div class="post-images d-flex align-items-center">
@@ -29,13 +31,10 @@
       <%= render "public/favorites/favorite-btn", post: post %>
     </span> </br>
 
-    <%= render_with_hashtags(post.caption) %> </br>
-
     <span class="comments">
       <%= render "public/comments/index", post: post %>
     </span>
 
-    <span class="small text-muted"><%= post.set_date %></span>
     <%= form_with model:[post, comment] do |f| %>
       <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加" %>
       <%= f.submit "投稿" %>

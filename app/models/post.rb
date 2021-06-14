@@ -21,10 +21,6 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def set_date
-    created_at.strftime('%Y/%m/%d')
-  end
-
   after_create do
     post = Post.find_by(id: id)
     hashtags = caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
