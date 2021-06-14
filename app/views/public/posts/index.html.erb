@@ -9,4 +9,6 @@
   <% @posts.each do |post| %>
     <%= render "post-item", { post: post, comment: @comment } %>
   <% end %>
+  <%= link_to_prev_page @posts, "<< prev" %>
+  <%= link_to_next_page @posts, "next >>" %>
 </div>

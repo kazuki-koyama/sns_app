@@ -9,8 +9,10 @@
     <% end %>
   </div>
 
-  <%= attachment_image_tag post, :before_image, class: "post-image" %>
-  <%= attachment_image_tag post, :after_image, class: "post-image" %>
+  <div class="post-image d-flex">
+    <%= attachment_image_tag post, :before_image %>
+    <%= attachment_image_tag post, :after_image %>
+  </div>
 
   <div id="post_<%= post.id %>" class="post-footer">
     <span class="like-btn">
