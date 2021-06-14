@@ -12,6 +12,7 @@
 //
 //= require jquery3
 //= require jquery.jscroll.min.js
+//= require bxslider
 //= require popper
 //= require bootstrap-sprockets
 
@@ -25,5 +26,18 @@ $(document).on('turbolinks:load', function() {
     contentSelector: '.jscroll',
     nextSelector: 'a.next',
     loadingHtml: '読み込み中'
+  });
+});
+
+// $(document).on('turbolinks:load', function() {
+$(document).ready(function() {
+  $('.bxslider').bxSlider({
+    pager: true,
+    controls: true,
+    nextText: "→",
+    prevText: "←",
+    moveSlides: 1,
+    maxSlides: 2,
+    slideWidth: 300
   });
 });

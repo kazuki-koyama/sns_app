@@ -12,14 +12,10 @@
   </div>
 
   <%= link_to post_path(post), remote: true do %>
-    <div class="post-images d-flex align-items-center border-top border-bottom">
-      <div>
-        <%= attachment_image_tag(post, :before_image) %>
-      </div>
-      <div>
-        <%= attachment_image_tag(post, :after_image) %>
-      </div>
-    </div>
+    <ul class="post-images d-flex align-items-center border-top border-bottom">
+      <li><%= attachment_image_tag(post, :before_image) %></li>
+      <li><%= attachment_image_tag(post, :after_image) %></li>
+    </ul>
   <% end %>
   <!-- 投稿詳細モーダルウィンドウの表示領域 -->
   <div id="post-detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

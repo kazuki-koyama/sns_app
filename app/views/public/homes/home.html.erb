@@ -1,4 +1,5 @@
 <% provide(:title, "Home") %>
+
 <div class="posts jscroll">
   <% @posts.each do |post| %>
     <%= render "public/posts/post-item", { post: post, comment: @comment } %>
