@@ -7,13 +7,17 @@ class Public::PostsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
     if @post.save
       @status = "success"
     else
       @status = "fail"
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def index

@@ -65,7 +65,16 @@ aside {
 }
 
 .post-images img {
-  width: 300px;
+  width: 299px;
 }
 
-.heart_red {color:#e54747;}
+.heart_red {
+  color: #e54747;
+}
+
+.modal-dialog-fluid {
+  max-width: inherit;
+  width: 98%;
+  margin-left: 15px;
+  padding: 0px;
+}

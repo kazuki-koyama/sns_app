@@ -1,0 +1,54 @@
+<div class="modal-dialog modal-dialog-fluid">
+  <div class="modal-content">
+    <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <%= link_to post_path(post), remote: true do %>
+        <div class="post-images d-flex align-items-center border-top border-bottom">
+          <div>
+            <%= attachment_image_tag(post, :before_image) %>
+          </div>
+          <div>
+            <%= attachment_image_tag(post, :after_image) %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="post-header p-2">
+        <%= link_to user_path(post.user) do %>
+          <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle border" %>
+          <span class="font-weight-bold ml-2"><%= post.user.name %></span>
+        <% end %>
+        <span class="small text-muted"> - <%= time_ago_in_words(post.created_at) %>前</span>
+        <% if post.user == current_user %>
+          <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
+        <% end %> </br>
+        <%= render_with_hashtags(post.caption) %>
+      </div>
+
+      <div id="post_<%= post.id %>" class="post-footer">
+        <span class="like-btn">
+          <%= render "public/likes/like-btn", post: post %>
+        </span>
+
+        <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i>
+
+        <span class="favorite-btn">
+          <%= render "public/favorites/favorite-btn", post: post %>
+        </span> </br>
+
+        <span class="comments">
+          <%= render "public/comments/index", post: post %>
+        </span>
+
+        <%= form_with model:[post, comment] do |f| %>
+          <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加" %>
+          <%= f.submit "投稿" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
