@@ -1,5 +1,4 @@
-<%= link_to "←", 'javascript:history.back()' %>
-<h5>Editing Post</h5>
+<% provide(:title, "投稿を編集") %>
 <%= form_with model: @post do |f| %>
   <div class="form-group">
     <%= f.label :before_image %>

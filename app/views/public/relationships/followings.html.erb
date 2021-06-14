@@ -1,4 +1,4 @@
-<h5>フォロー中</h5>
+<% provide(:title, "フォロー中") %>
 <% if @users.exists? %>
   <%= render 'public/users/index', users: @users %>
 <% else %>

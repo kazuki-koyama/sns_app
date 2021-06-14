@@ -1,4 +1,4 @@
-<h5>#<%= @tag.hashname %></h5>
+<h5>#<%= @hashtag.hashname %></h5>
 <div class="posts">
   <% @posts.each do |post| %>
     <%= render "post-item", { post: post, comment: @comment } %>
