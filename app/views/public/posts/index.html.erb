@@ -5,10 +5,9 @@
   <% end %>
 </div>
 
-<div class="posts">
+<div class="posts jscroll">
   <% @posts.each do |post| %>
     <%= render "post-item", { post: post, comment: @comment } %>
   <% end %>
-  <%= link_to_prev_page @posts, "<< prev" %>
-  <%= link_to_next_page @posts, "next >>" %>
+  <%= link_to_next_page @posts, "next >>", class: "next" %>
 </div>
