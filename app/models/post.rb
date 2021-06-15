@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :comments,      dependent: :destroy
   has_many :favorites,     dependent: :destroy
   has_many :hashtag_posts, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_many :hashtags, through: :hashtag_posts
 
   attachment :before_image
