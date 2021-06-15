@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bxslider
  *= require_tree .
  *= require_self
  */
@@ -87,7 +86,17 @@ aside {
 
 .modal-dialog-fluid {
   max-width: inherit;
-  width: 98%;
-  margin-left: 15px;
-  padding: 0px;
+  width: 815px;
+}
+
+.carousel-item {
+  width: 480px;
+  height: 600px;
+  position: relative;
+}
+
+.carousel-item img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

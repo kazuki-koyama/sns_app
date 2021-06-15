@@ -12,7 +12,6 @@
 //
 //= require jquery3
 //= require jquery.jscroll.min.js
-//= require bxslider
 //= require popper
 //= require bootstrap-sprockets
 
