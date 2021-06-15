@@ -32,6 +32,10 @@ ul {
 }
 
 a {
+  // color: #000;
+  text-decoration: none;
+}
+a:hover {
   text-decoration: none;
 }
 
@@ -72,6 +76,13 @@ aside {
 
 .heart_red {
   color: #e54747;
+}
+
+.n-circle {
+  position: absolute;
+  padding-left: 1rem;
+  padding-top: 0rem;
+  color: #efa04c;
 }
 
 .modal-dialog-fluid {
