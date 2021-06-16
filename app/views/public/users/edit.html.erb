@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <p class="text-success"><%= flash[:notice] %></p>
+<% end %>
 <h5>プロフィールを編集</h5>
 
 <%= form_with model: @user, local: true do |f| %>
