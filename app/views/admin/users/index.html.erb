@@ -22,9 +22,9 @@
         <td><%= "#{user.followings.count}人" %></td>
         <td>
         	<% if user.is_valid? %>
-						<span class="text-active">有効</span>
+						<span class="text-success">有効</span>
 					<% else %>
-						<span class="text-invalid">退会済み</span>
+						<span class="text-muted">退会済み</span>
 					<% end %>
         </td>
         <td><%= user.created_at.strftime('%Y/%m/%d %H:%M') %></td>

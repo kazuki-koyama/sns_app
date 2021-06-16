@@ -25,9 +25,9 @@
 			<td>会員ステータス</td>
       <td>
       	<% if @user.is_valid? %>
-					<span class="text-active">有効</span>
+					<span class="text-success">有効</span>
 				<% else %>
-					<span class="text-invalid">退会済み</span>
+					<span class="text-muted">退会済み</span>
 				<% end %>
       </td>
 			<td><%= f.radio_button :is_valid, true %><%= f.label :is_valid, "有効", class: "text-active" %></td>
