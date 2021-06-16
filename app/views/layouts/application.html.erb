@@ -11,7 +11,9 @@
   <body>
     <header class="fixed-top bg-white">
       <div class="headnav text-right">
-        <% if user_signed_in? %>
+        <% if admin_signed_in? %>
+          <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
+        <% elsif user_signed_in? %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to "Log in", new_user_session_path, class: "fas fa-sign-in-alt" %>
@@ -59,6 +61,7 @@
         </div>
       </main>
 
+      <% unless admin_signed_in? %>
       <aside>
         <h5>おすすめ</h5>
         <%= link_to "すべて見る", users_path %> </br>
@@ -76,6 +79,7 @@
           </div>
         <% end %>
       </aside>
+      <% end %>
 
     </div>
   </body>

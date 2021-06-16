@@ -1,2 +1,15 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<table class='table table-borderless'>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr id="user_<%= user.id %>">
+        <td>
+          <%= link_to admin_user_path(user) do %>
+            <%= attachment_image_tag user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle border" %>
+          <% end %>
+        </td>
+        <td><%= link_to user.name, admin_user_path(user) %></td>
+        <td><%= user.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
