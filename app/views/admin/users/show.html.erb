@@ -1,0 +1,41 @@
+<% if flash[:notice] %>
+  <p class="text-success"><%= flash[:notice] %></p>
+<% end %>
+<div class="user-info pb-2 mb-3">
+  <%= attachment_image_tag @user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+  <%= @user.name %> </br>
+  <%= @user.introduction %>
+</div>
+<table class='table'>
+  <tbody>
+    <tr>
+      <td>投稿件数</td>
+      <td colspan="3"><%= @user.posts.count %>件</td>
+    </tr>
+    <tr>
+      <td>フォロワー数</td>
+      <td colspan="3"><%= "#{@user.followers.count}人" %></td>
+    </tr>
+    <tr>
+      <td>フォロー数</td>
+      <td colspan="3"><%= "#{@user.followings.count}人" %></td>
+    </tr>
+  	<%= form_with(model: @user, url: admin_user_path(@user)) do |f| %>
+		<tr>
+			<td>会員ステータス</td>
+      <td>
+      	<% if @user.is_valid? %>
+					<span class="text-success">有効</span>
+				<% else %>
+					<span class="text-muted">退会済み</span>
+				<% end %>
+      </td>
+			<td><%= f.radio_button :is_valid, true %><%= f.label :is_valid, "有効", class: "text-active" %></td>
+			<td><%= f.radio_button :is_valid, false %><%= f.label :is_valid, "退会済み", class: "text-invalid" %></td>
+		</tr>
+		<tr>
+			<td colspan="4" class="text-center"><%= f.submit "更新", class: "btn btn-primary" %></td>
+		</tr>
+		<% end %>
+  </tbody>
+</table>
