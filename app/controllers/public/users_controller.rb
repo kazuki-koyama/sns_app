@@ -30,6 +30,15 @@ class Public::UsersController < ApplicationController
     @comment = Comment.new
   end
 
+  def unsubscribe
+  end
+
+  def withdraw
+    current_user.update(is_vaild: false)
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def user_params

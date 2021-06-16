@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     get 'home' => 'homes#home'
     get '/post/hashtag/:name' => 'posts#hashtag'
     get 'search' => 'searches#search'
+    get 'users/unsubscribe' => 'users#unsubscribe', as: 'confirm_unsubscribe'
+    patch 'users/withdraw' => 'users#withdraw', as: 'withdraw_user'
+    put 'users/withdraw' => 'users#withdraw'
     resources :notifications, only: :index
     resources :users, only: [:show, :index, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
