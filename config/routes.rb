@@ -4,8 +4,11 @@ Rails.application.routes.draw do
     devise_for :admins, controllers: {
       sessions:      'admin/admins/sessions',
       passwords:     'admin/admins/passwords',
-      registrations: 'admin/admins/registrations'
     }
+  end
+
+  namespace :admin do
+    resources :users, only: [:show, :index, :update]
   end
 
   scope module: :public do
