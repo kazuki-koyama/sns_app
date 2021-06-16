@@ -6,7 +6,9 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
     @comment.user_id = current_user.id
-    unless @comment.save
+    if @comment.save
+      @post.create_notification_comment!(current_user, @comment.id)
+    else
       render 'error'
     end
   end

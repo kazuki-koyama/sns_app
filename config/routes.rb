@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'home' => 'homes#home'
     get '/post/hashtag/:name' => 'posts#hashtag'
     get 'search' => 'searches#search'
+    resources :notifications, only: :index
     resources :users, only: [:show, :index, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
     	get 'followings' => 'relationships#followings', as: 'followings'

@@ -8,7 +8,7 @@
     <% if post.user == current_user %>
       <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
     <% end %> </br>
-    <%= render_with_hashtags(post.caption) %>
+    <%= render_with_hashtags(safe_join(post.caption.split("\n"), tag(:br))) %>
   </div>
 
   <%= link_to post_path(post), remote: true do %>

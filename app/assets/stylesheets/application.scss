@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bxslider
  *= require_tree .
  *= require_self
  */
@@ -32,6 +31,10 @@ ul {
 }
 
 a {
+  color: #262626;
+  text-decoration: none;
+}
+a:hover {
   text-decoration: none;
 }
 
@@ -59,6 +62,7 @@ aside {
   width: 275px;
 }
 
+// 以下、個別スタイル
 .header-title {
   position: fixed;
   width: 600px;
@@ -74,9 +78,33 @@ aside {
   color: #e54747;
 }
 
+.fa-stack {
+  width: 3.9em;
+}
+.n-circle {
+  font-size: 0.5em;
+  top: -1em;
+  left: -1.8em;
+  color: #ce9eff;
+}
+
+// modal window
 .modal-dialog-fluid {
   max-width: inherit;
-  width: 98%;
-  margin-left: 15px;
-  padding: 0px;
+  width: 815px;
+}
+
+.carousel-inner {
+  background-color: #000;
+}
+.carousel-item {
+  width: 480px;
+  height: 600px;
+  position: relative;
+}
+.carousel-item img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

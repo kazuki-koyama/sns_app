@@ -3,6 +3,7 @@ class Public::LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
+    @post.create_notification_like!(current_user)
     like = @post.likes.new(user_id: current_user.id)
     like.save
   end
