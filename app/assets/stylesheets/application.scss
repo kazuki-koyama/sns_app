@@ -31,7 +31,7 @@ ul {
 }
 
 a {
-  // color: #000;
+  color: #262626;
   text-decoration: none;
 }
 a:hover {
@@ -62,6 +62,7 @@ aside {
   width: 275px;
 }
 
+// 以下、個別スタイル
 .header-title {
   position: fixed;
   width: 600px;
@@ -77,25 +78,32 @@ aside {
   color: #e54747;
 }
 
+.fa-stack {
+  width: 3.9em;
+}
 .n-circle {
-  position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
+  font-size: 0.5em;
+  top: -1em;
+  left: -1.8em;
+  color: #ce9eff;
 }
 
+// modal window
 .modal-dialog-fluid {
   max-width: inherit;
   width: 815px;
 }
 
+.carousel-inner {
+  background-color: #000;
+}
 .carousel-item {
   width: 480px;
   height: 600px;
   position: relative;
 }
-
 .carousel-item img {
+  width: 100%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

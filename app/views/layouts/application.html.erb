@@ -23,23 +23,23 @@
 
       <nav class="sidenav">
         <ul>
-          <li><%= link_to "ホーム", home_path, class: "fas fa-home" %></li>
-          <li><%= link_to  "検索", posts_path, class: "fas fa-search" %></li>
+          <li><%= link_to "ホーム", home_path, class: "fas fa-home fa-lg" %></li>
+          <li><%= link_to  "検索", posts_path, class: "fas fa-search fa-lg" %></li>
           <% if user_signed_in? %>
             <li>
               <%= link_to notifications_path do %>
                 <% if unchecked_notifications.any? %>
-                  <span class="fa-stack">
-                    <i class="far fa-bell fa-stack-2x">通知</i>
-                    <i class="fas fa-circle n-circle fa-stack-1x"></i>
+                  <span class="fa-stack position-relative">
+                    <i class="far fa-bell fa-lg fa-stack-1x">通知</i>
+                    <i class="fas fa-circle fa-lg n-circle fa-stack-1x position-absolute"></i>
                   </span>
                 <% else %>
-                  <i class="far fa-bell">通知</i>
+                  <i class="far fa-bell fa-lg">通知</i>
                 <% end %>
               <% end %>
             </li>
-            <li><%= link_to "ブックマーク", favorites_user_path(@user), class: "far fa-bookmark" %></li>
-            <li><%= link_to "マイページ", user_path(current_user), class: "far fa-user" %></li>
+            <li><%= link_to "ブックマーク", favorites_user_path(@user), class: "far fa-bookmark fa-lg" %></li>
+            <li><%= link_to "マイページ", user_path(current_user), class: "far fa-user fa-lg" %></li>
             <li><%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %></li>
             <!-- 新規投稿作成モーダルウィンドウの表示領域 -->
             <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
