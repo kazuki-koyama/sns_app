@@ -27,8 +27,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
-    @comment = Comment.new
+    @favorite_posts = Post.includes(:user, :comments).find(favorites)
   end
 
   def unsubscribe
