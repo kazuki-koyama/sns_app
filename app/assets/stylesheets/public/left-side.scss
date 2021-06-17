@@ -15,11 +15,11 @@
   }
   &__icon-outer {
     width: 40px;
-    padding: 0 auto;
+    text-align: center;
   }
   &__icon {
-    font-size: 35px;
-    line-height: 35px;
+    font-size: 30px;
+    line-height: 30px;
   }
   &__icon-circle {
     font-size: 5px;
@@ -29,9 +29,9 @@
   }
   &__text {
     padding-left: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    line-height: 35px;
+    line-height: 30px;
   }
 
   // 投稿box
@@ -61,16 +61,13 @@
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:1125px) {
   .left-side {
 
     // sidenavリンクbox
     &__link {
       padding-left: 0;
       display: block;
-    }
-    &__link:hover {
-      background-color: #f0f0f0;
     }
     &__icon-outer {
       width: 35px;
@@ -88,22 +85,6 @@
     }
     &__post-icon {
       display: inline-block !important;
-    }
-  }
-}
-
-@media screen and (max-width:425px) {
-  .left-side {
-    &__link {
-      padding: 0;
-    }
-    &__text {
-      line-height: 10px;
-      padding-top: 2px;
-      width: 100%;
-    }
-    &__post-box {
-      display: none;
     }
   }
 }

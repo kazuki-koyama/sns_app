@@ -6,9 +6,7 @@
     </div>
 
     <div class='home__main'>
-      <h5>
-        <%= link_to '←', 'javascript:history.back()' %>おすすめ
-      </h5>
+      <h5><%= link_to '←', 'javascript:history.back()' %>おすすめ</h5>
       <%= render partial: 'index', collection: @users, as: 'user' %>
     </div>
 

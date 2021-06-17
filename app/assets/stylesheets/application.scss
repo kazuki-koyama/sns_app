@@ -46,17 +46,16 @@ a:hover {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #fff;
   }
   &__left-side {
     min-width: 250px;
   }
   &__main {
-    width: 600px;
+    min-width: 600px;
     margin-right: 25px;
   }
   &__right-side {
-    min-width: 250px;
+    width: 250px;
   }
 }
 
@@ -86,26 +85,26 @@ a:hover {
   transform: translateY(-50%);
 }
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width:1125px) {
   .home {
-    &__right-side {
-      display: none;
+    &__box {
+      justify-content: center;
     }
-    &__main {
-      width: 100%;
-    }
-  }
-}
-
-@media screen and (max-width:768px) {
-  .home {
     &__left-side {
       min-width: 90px;
     }
   }
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:965px) {
+  .home {
+    &__right-side {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width:690px) {
   .home {
     &__left-side {
       display: none;
