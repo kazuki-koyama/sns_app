@@ -1,8 +1,5 @@
 <% provide(:title, "#{@user.name}") %>
 <%= render "user-info", user: @user %>
-
 <div class="posts">
-  <% @posts.each do |post| %>
-    <%= render "public/posts/post-item", { post: post, comment: @comment } %>
-  <% end %>
+  <%= render partial: "public/posts/post-item", collection: @posts, as: "post" %>
 </div>

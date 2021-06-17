@@ -4,8 +4,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
-    @comment = Comment.new
+    @posts = @user.posts.includes(:comments)
+    # @posts = @user.joins(:comments).eager_load(:comments)
+    # comments = post.comments.includes(:user)
   end
 
   def index
