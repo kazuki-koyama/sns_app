@@ -52,7 +52,7 @@
                 <% end %>
               <% end %>
             </li>
-            <li><%= link_to "ブックマーク", favorites_user_path(@user), class: "far fa-bookmark fa-lg" %></li>
+            <li><%= link_to "ブックマーク", favorites_user_path(current_user), class: "far fa-bookmark fa-lg" %></li>
             <li><%= link_to "マイページ", user_path(current_user), class: "far fa-user fa-lg" %></li>
             <li><%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %></li>
             <!-- 新規投稿作成モーダルウィンドウの表示領域 -->
