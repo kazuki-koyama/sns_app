@@ -1,17 +1,21 @@
 <div class='home'>
   <div class='home__box'>
 
-    <div class='home__left-side'>
+    <div class='home__sidenav'>
       <%= render 'public/shared/sidenav', user: current_user %>
     </div>
 
     <div class='home__main'>
-      <h5><%= link_to '←', 'javascript:history.back()' %>おすすめ</h5>
-      <%= render partial: 'index', collection: @users, as: 'user' %>
+      <div class='home__main-contens'>
+        <h5><%= link_to '←', 'javascript:history.back()' %>おすすめ</h5>
+        <%= render partial: 'index', collection: @users, as: 'user' %>
+      </div>
+      
+      <aside class='home__main-aside'>
+        
+      </aside>
     </div>
 
-    <div class='home__right-side'>
-    </div>
 
     <div class='home__bottom-nav'>
     </div>

@@ -43,18 +43,22 @@ a:hover {
 // 全体レイアウト
 .home {
   &__box {
-    display: flex;
     max-width: 1200px;
+    display: flex;
     margin: 0 auto;
   }
-  &__left-side {
+  &__sidenav {
     min-width: 250px;
   }
   &__main {
+    width: 875px;
+    padding-left: 10px;
+  }
+  &__main-contens {
     min-width: 600px;
     margin-right: 25px;
   }
-  &__right-side {
+  &__main-aside {
     width: 250px;
   }
 }
@@ -90,7 +94,7 @@ a:hover {
     &__box {
       justify-content: center;
     }
-    &__left-side {
+    &__sidenav {
       min-width: 90px;
     }
   }
@@ -98,7 +102,7 @@ a:hover {
 
 @media screen and (max-width:965px) {
   .home {
-    &__right-side {
+    &__main-aside {
       display: none;
     }
   }
@@ -106,7 +110,7 @@ a:hover {
 
 @media screen and (max-width:690px) {
   .home {
-    &__left-side {
+    &__sidenav {
       display: none;
     }
     &__main {
