@@ -1,0 +1,14 @@
+<div class='header__box mx-auto px-3 border-bottom'>
+  <!-- 左寄せ部分 -->
+  <div class='header__title-box float-left py-3'>
+    <%= link_to root_path do %>
+      <%= image_tag "/assets/logo-sm.png" %>
+    <% end %>
+  </div>
+
+  <!-- 右寄せ部分 -->
+  <div class='header__content-box py-3 float-right'>
+    <%= link_to 'ユーザー一覧', admin_users_path, class: 'header__content' %>
+    <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'header__content' %>
+  </div>
+</div>

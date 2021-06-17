@@ -4,32 +4,18 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="fixed-top bg-white">
-      <div class="headnav text-right">
-        <% if admin_signed_in? %>
-
-          <!-- 仮置き  -->
-          <div class="search-form text-center">
-            <%= form_with url: search_path, method: :get, local: true do |f| %>
-              <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
-              <% f.submit %>
-            <% end %>
-          </div>
-          <!---->
-
-          <%= link_to "ユーザー一覧", admin_users_path %>
-          <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
-        <% elsif user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Log in", new_user_session_path, class: "fas fa-sign-in-alt" %>
-        <% end %>
-      </div>
+    <header>
+      <% if admin_signed_in? %>
+        <%= render 'layouts/header-admin' %>
+      <% elsif user_signed_in? %>
+        <%= render 'layouts/header-user' %>
+      <% end %>
     </header>
 
     <div class="wrapper mt-5">

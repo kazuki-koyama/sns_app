@@ -18,11 +18,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
+* {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
   // width: 1150px;
-  margin: 0 auto;
 }
 
 ul {
@@ -35,7 +35,9 @@ a {
   text-decoration: none;
 }
 a:hover {
+  color: black;
   text-decoration: none;
+  cursor: pointer;
 }
 
 header {
