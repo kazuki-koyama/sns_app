@@ -54,10 +54,10 @@
             </span> </br>
 
             <span class="comments">
-              <%= render "public/comments/index", post: post %>
+              <%= render partial: "public/comments/index", collection: post.comments, as: "comment" %>
             </span>
 
-            <%= form_with model:[post, comment] do |f| %>
+            <%= form_with model:[post, Comment.new] do |f| %>
               <%= f.text_area :comment, size: "38x2", placeholder: "コメントを追加" %>
               <%= f.submit "投稿" %>
             <% end %>
