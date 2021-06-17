@@ -40,44 +40,29 @@ a:hover {
   cursor: pointer;
 }
 
-header {
-  height: 48px;
-}
-
+// 全体レイアウト
 .home {
   &__box {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 100vh;
     background-color: #fff;
   }
   &__left-side {
-    width: 275px;
+    min-width: 250px;
   }
   &__main {
     width: 600px;
-    margin-right: 28px;
+    margin-right: 25px;
   }
   &__right-side {
-    width: 275px;
+    min-width: 250px;
   }
 }
 
 // 以下、個別スタイル
-.header-title {
-  position: fixed;
-  width: 600px;
-  padding: 5px;
-  background: #fff;
-}
-
 .post-images img {
   width: 299px;
-}
-
-.heart_red {
-  color: #e54747;
 }
 
 // modal window
@@ -85,7 +70,7 @@ header {
   max-width: inherit;
   width: 815px;
 }
-
+// カルーセル
 .carousel-inner {
   background-color: #000;
 }
@@ -99,4 +84,34 @@ header {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+
+@media screen and (max-width:1100px) {
+  .home {
+    &__right-side {
+      display: none;
+    }
+    &__main {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width:768px) {
+  .home {
+    &__left-side {
+      min-width: 90px;
+    }
+  }
+}
+
+@media screen and (max-width:425px) {
+  .home {
+    &__left-side {
+      display: none;
+    }
+    &__main {
+      width: 100%;
+    }
+  }
 }

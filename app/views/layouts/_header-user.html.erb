@@ -1,13 +1,13 @@
-<div class='header__box mx-auto px-3'>
+<div class='header__box mx-auto d-flex px-3'>
   <!-- 左寄せ部分 -->
-  <div class='header__title-box float-left py-3'>
+  <div class='header__title-box py-3'>
     <%= link_to root_path do %>
       <%= image_tag "/assets/logo-sm.png" %>
     <% end %>
   </div>
 
   <!-- 右寄せ部分 -->
-  <div class='header__content-box py-3 float-right'>
+  <div class='header__content-box py-3 ml-auto'>
     <%= link_to 'ホーム', home_path, class: 'header__content' %>
     <%= link_to '検索', posts_path, class: 'header__content' %>
     <%= link_to '通知', notifications_path, class: 'header__content' %>
@@ -17,7 +17,7 @@
 
   <!--右寄せ部分 (画面幅が小さい時用のハンバーガーメニュー) -->
   <input id='header_checkbox' class='header__hamburger-checkbox' type='checkbox'>
-  <label for='header_checkbox' class='header__hamburger-icon float-right py-3'>
+  <label for='header_checkbox' class='header__hamburger-icon py-3 ml-auto'>
     <i class="fas fa-ellipsis-h header__icon"></i>
   </label>
   <!--コンテンツ-->
