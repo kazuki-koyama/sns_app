@@ -1,16 +1,17 @@
 .left-side {
+  width: 275px;
 
-  // リンク集box============================
+  &__sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  // sidenavリンクbox
   &__link {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
+    padding: 10px 0px 10px 20px;
     display: flex;
-    color: black;
   }
   &__link:hover {
-    text-decoration: none;
-    color: black;
     background-color: #f0f0f0;
   }
   &__icon-outer {
@@ -21,11 +22,11 @@
     font-size: 35px;
     line-height: 35px;
   }
-  &__icon-profile {
-    width: 35px;
-    height: 35px;
-    border: 1px solid black;
-    border-radius: 50%;
+  &__icon-circle {
+    font-size: 5px;
+    top: -18px;
+    right: -2.5px;
+    color: #ce9eff;
   }
   &__text {
     padding-left: 10px;
@@ -34,25 +35,38 @@
     line-height: 35px;
   }
 
-  // 投稿box============================
+  // 投稿box
   &__post-box {
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 44px;
+    margin: 20px;
+    text-align: center;
+  }
+  &__post-icon {
+    display: none !important;
+    font-size: 40px;
+    color: #ce9eff;
+  }
+  &__post-icon:hover,
+  &__post-icon:active {
+    color: #bf7fff;
+  }
+
+  // フッター
+  &__footer {
+    font-size: 10px;
+    position: relative;
+  }
+  &__footer-text {
+    position: absolute;
+    top: 500px;
+    left: 25px;
   }
 }
 
 @media screen and (max-width:768px) {
   .left-side {
-
     width: 90px;
 
-    // リンク集box---------------------
-    &__links-box {
-      padding-top: 0;
-      padding-bottom: 0;
-      border-bottom: 1px solid #cccccc;
-    }
+    // sidenavリンクbox
     &__link {
       padding-left: 0;
       display: block;
@@ -70,9 +84,12 @@
       text-align: center;
     }
 
-    // 投稿box---------------------
-    &__tweet-box {
+    // 投稿box
+    &__post-btn {
       display: none;
+    }
+    &__post-icon {
+      display: inline-block !important;
     }
   }
 }
@@ -87,8 +104,8 @@
       padding-top: 2px;
       width: 100%;
     }
-    &__icon-profile {
-      margin-bottom: 2px;
+    &__post-box {
+      display: none;
     }
   }
 }

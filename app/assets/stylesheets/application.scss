@@ -47,8 +47,10 @@ header {
 .home {
   &__box {
     display: flex;
-    align-items: stretch;
+    max-width: 1200px;
+    margin: 0 auto;
     min-height: 100vh;
+    background-color: #fff;
   }
   &__left-side {
     width: 275px;
@@ -76,16 +78,6 @@ header {
 
 .heart_red {
   color: #e54747;
-}
-
-.fa-stack {
-  width: 3.9em;
-}
-.n-circle {
-  font-size: 0.5em;
-  top: -1em;
-  left: -1.8em;
-  color: #ce9eff;
 }
 
 // modal window

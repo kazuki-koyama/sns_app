@@ -1,0 +1,16 @@
+.btn {
+
+  &__purple {
+    padding: 8px 28px;
+    background-color: #ce9eff;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+  }
+  &__purple:hover,
+  &__purple:active {
+    color: #fff;
+    background-color: #bf7fff;
+  }
+
+}

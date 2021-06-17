@@ -6,13 +6,12 @@
     </div>
 
     <div class='home__main'>
-      <%= link_to "←", 'javascript:history.back()' %>
+      <%= link_to '←', 'javascript:history.back()' %>
       <h5>おすすめ</h5>
-      <%= render partial: 'index', collection: @users, as: "user" %>
+      <%= render partial: 'index', collection: @users, as: 'user' %>
     </div>
 
     <div class='home__right-side'>
-
     </div>
 
     <div class='home__bottom-nav'>
