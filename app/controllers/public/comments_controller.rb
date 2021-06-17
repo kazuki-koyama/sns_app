@@ -3,9 +3,8 @@ class Public::CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
-    @comment.user_id = current_user.id
     if @comment.save
       @post.create_notification_comment!(current_user, @comment.id)
     else

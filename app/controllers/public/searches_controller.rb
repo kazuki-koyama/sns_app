@@ -5,7 +5,6 @@ class Public::SearchesController < ApplicationController
     elsif (params[:keyword]).include?('#')
       @posts = Hashtag.search(params[:keyword]).order('created_at DESC')
       @hashtag = (params[:keyword])
-      @comment = Comment.new
     elsif (params[:keyword]).include?('#') && @posts.nil?
       @hashtag = (params[:keyword])
     else

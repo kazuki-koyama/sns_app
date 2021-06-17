@@ -1,8 +1,6 @@
 <% provide(:title, "Home") %>
 
 <div class="posts jscroll">
-  <% @posts.each do |post| %>
-    <%= render "public/posts/post-item", { post: post, comment: @comment } %>
-  <% end %>
+  <%= render partial: "public/posts/post-item", collection: @posts, as: "post" %>
   <%= link_to_next_page @posts, "next >>", class: "next" %>
 </div>

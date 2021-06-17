@@ -6,7 +6,6 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new
     @post = current_user.posts.new(post_params)
     if @post.save
       @status = "success"
@@ -16,8 +15,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
+    @post = Post.includes(:user, :comments).find(params[:id])
     respond_to do |format|
       format.html
       format.js
@@ -25,8 +23,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).without_count.per(10)
-    @comment = Comment.new
+    @posts = Post.includes(:user, :comments).order(created_at: :desc).page(params[:page]).without_count.per(10)
   end
 
   def edit
@@ -47,10 +44,8 @@ class Public::PostsController < ApplicationController
   end
 
   def hashtag
-    @user = current_user
     @hashtag = Hashtag.find_by(hashname: params[:name])
     @posts = @hashtag.posts
-    @comment = Comment.new
   end
 
   private

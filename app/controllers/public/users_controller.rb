@@ -4,8 +4,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
-    @comment = Comment.new
+    @posts = @user.posts.includes(:comments)
+    # @posts = @user.joins(:comments).eager_load(:comments)
+    # comments = post.comments.includes(:user)
   end
 
   def index
@@ -26,8 +27,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
-    @comment = Comment.new
+    @favorite_posts = Post.includes(:user, :comments).find(favorites)
   end
 
   def unsubscribe

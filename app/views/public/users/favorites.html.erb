@@ -2,8 +2,6 @@
 
 <div class="posts">
   <% if @favorite_posts.present? %>
-    <% @favorite_posts.each do |post| %>
-      <%= render "public/posts/post-item", { post: post, comment: @comment } %>
-    <% end %>
+    <%= render partial: "public/posts/post-item", collection: @favorite_posts, as: "post" %>
   <% end %>
 </div>
