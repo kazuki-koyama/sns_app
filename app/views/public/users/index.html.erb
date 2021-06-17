@@ -1,3 +1,23 @@
-<%= link_to "←", 'javascript:history.back()' %>
-<h5>おすすめ</h5>
-<%= render partial: 'index', collection: @users, as: "user" %>
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__left-side'>
+      <%= render 'public/shared/sidenav', user: current_user %>
+    </div>
+
+    <div class='home__main'>
+      <%= link_to "←", 'javascript:history.back()' %>
+      <h5>おすすめ</h5>
+      <%= render partial: 'index', collection: @users, as: "user" %>
+    </div>
+
+    <div class='home__right-side'>
+
+    </div>
+
+    <div class='home__bottom-nav'>
+
+    </div>
+
+  </div>
+</div>

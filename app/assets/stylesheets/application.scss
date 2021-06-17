@@ -44,24 +44,22 @@ header {
   height: 48px;
 }
 
-.wrapper {
-  display: flex;
-  align-items: stretch;
-  min-height: 100vh;
-}
-
-.sidenav {
-  width: 275px;
-  padding: 0 12px;
-}
-
-.contents {
-  width: 600px;
-  margin-right: 28px;
-}
-
-aside {
-  width: 275px;
+.home {
+  &__box {
+    display: flex;
+    align-items: stretch;
+    min-height: 100vh;
+  }
+  &__left-side {
+    width: 275px;
+  }
+  &__main {
+    width: 600px;
+    margin-right: 28px;
+  }
+  &__right-side {
+    width: 275px;
+  }
 }
 
 // 以下、個別スタイル

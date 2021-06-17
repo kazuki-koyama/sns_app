@@ -1,0 +1,94 @@
+.left-side {
+
+  // リンク集box============================
+  &__link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    display: flex;
+    color: black;
+  }
+  &__link:hover {
+    text-decoration: none;
+    color: black;
+    background-color: #f0f0f0;
+  }
+  &__icon-outer {
+    width: 40px;
+    padding: 0 auto;
+  }
+  &__icon {
+    font-size: 35px;
+    line-height: 35px;
+  }
+  &__icon-profile {
+    width: 35px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+  &__text {
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 35px;
+  }
+
+  // 投稿box============================
+  &__post-box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 44px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .left-side {
+
+    width: 90px;
+
+    // リンク集box---------------------
+    &__links-box {
+      padding-top: 0;
+      padding-bottom: 0;
+      border-bottom: 1px solid #cccccc;
+    }
+    &__link {
+      padding-left: 0;
+      display: block;
+    }
+    &__link:hover {
+      background-color: #f0f0f0;
+    }
+    &__icon-outer {
+      width: 35px;
+      margin: 0 auto;
+    }
+    &__text {
+      padding-left: 0;
+      font-size: 8px;
+      text-align: center;
+    }
+
+    // 投稿box---------------------
+    &__tweet-box {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width:425px) {
+  .left-side {
+    &__link {
+      padding: 0;
+    }
+    &__text {
+      line-height: 10px;
+      padding-top: 2px;
+      width: 100%;
+    }
+    &__icon-profile {
+      margin-bottom: 2px;
+    }
+  }
+}
