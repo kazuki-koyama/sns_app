@@ -1,43 +1,52 @@
-<div class="post-item mb-5 border">
-  <div class="post-header p-2">
+<div class="post-item mb-5 border bg-white">
+  <!--ヘッダー-->
+  <div class="p-2 position-relative">
     <%= link_to user_path(post.user) do %>
       <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle border" %>
       <span class="font-weight-bold ml-2"><%= post.user.name %></span>
     <% end %>
     <span class="small text-muted"> - <%= time_ago_in_words(post.created_at) %>前</span>
     <% if post.user == current_user %>
-      <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
+      <%= link_to "", edit_post_path(post), class: "far fa-edit link__edit" %>
     <% end %> </br>
+  </div>
+  <div class='px-3 pb-2 text-break'>
     <%= render_with_hashtags(safe_join(post.caption.split("\n"), tag(:br))) %>
   </div>
 
+  <!--画像-->
   <%= link_to post_path(post), remote: true do %>
     <ul class="post-images d-flex align-items-center border-top border-bottom">
       <li><%= attachment_image_tag(post, :before_image) %></li>
       <li><%= attachment_image_tag(post, :after_image) %></li>
     </ul>
   <% end %>
-  <!-- 投稿詳細モーダルウィンドウの表示領域 -->
-  <div id="post-detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 
-  <div id="post_<%= post.id %>" class="post-footer">
-    <span class="like-btn">
-      <%= render "public/likes/like-btn", post: post %>
-    </span>
-
-    <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i>
-
-    <span class="favorite-btn">
-      <%= render "public/favorites/favorite-btn", post: post %>
-    </span> </br>
+  <!--いいね・コメント欄-->
+  <div id="post_<%= post.id %>">
+    <div class='position-relative p-2'>
+      <span class="like-btn">
+        <%= render "public/likes/like-btn", post: post %>
+      </span>
+      <i class="far fa-comment fa-lg pl-2"></i>
+      <span class='comments-count'><%= post.comments.count %>コメント</span>
+      <span class="favorite-btn link__right">
+        <%= render "public/favorites/favorite-btn", post: post %>
+      </span> </br>
+    </div>
 
     <span class="comments">
       <%= render partial: "public/comments/index", collection: post.comments, as: "comment" %>
     </span>
 
-    <%= form_with model:[post, Comment.new] do |f| %>
-      <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加" %>
-      <%= f.submit "投稿" %>
-    <% end %>
+    <div class='py-2 text-center'>
+      <%= form_with model:[post, Comment.new] do |f| %>
+        <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加...", class: 'comment-form border pr-1' %>
+        <%= f.submit "コメントを追加", class: 'link__purple btn__text' %>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<!-- モーダルウィンドウの(投稿詳細) -->
+<div id="post-detail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

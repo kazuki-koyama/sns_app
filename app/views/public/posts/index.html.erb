@@ -1,11 +1,35 @@
-<div class="search-form text-center">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
-    <% f.submit %>
-  <% end %>
-</div>
+<% provide(:title, "検索") %>
 
-<div class="posts jscroll">
-  <%= render partial: "post-item", collection: @posts, as: "post" %>
-  <%= link_to_next_page @posts, "next >>", class: "next" %>
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
+    </div>
+
+    <div class='home__main d-flex'>
+
+      <div class='home__main-contents'>
+        <div class="text-center py-3">
+          <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
+            <% f.submit %>
+          <% end %>
+        </div>
+        <div class="posts jscroll">
+          <%= render partial: "post-item", collection: @posts, as: "post" %>
+          <%= link_to_next_page @posts, "next >>", class: "next" %>
+        </div>
+      </div>
+
+      <aside class='home__main-aside'>
+        <%= render 'public/shared/main-aside', users: @users %>
+      </aside>
+    </div>
+
+    <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
+    </div>
+
+  </div>
 </div>

@@ -1,11 +1,13 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
+
     <div class="modal-header">
       <h5 class="modal-title" id="newPostLabel">New Post</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+
     <div class="modal-body">
       <%= form_with model: @post do |f| %>
         <div class="form-group">
@@ -21,10 +23,9 @@
           <%= f.text_area :caption, class: "form-control" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit class: 'btn btn-success' %>
+        <div class="actions text-center py-3">
+          <%= f.submit '投稿', class: 'btn__lg btn__purple' %>
         </div>
-
       <% end %>
     </div>
 

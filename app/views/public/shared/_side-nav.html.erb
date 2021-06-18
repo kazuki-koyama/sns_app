@@ -1,0 +1,75 @@
+<div class='side-nav h-100'>
+  <div class='sticky-top'>
+
+    <nav class='py-3'>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to home_path, class: "side-nav__link" do %>
+              <div class='side-nav__icon-outer'>
+                <i class="fas fa-home side-nav__icon"></i>
+              </div>
+              <div class='side-nav__text'>ホーム</div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to posts_path, class: "side-nav__link" do %>
+              <div class='side-nav__icon-outer'>
+                <i class="fas fa-search side-nav__icon"></i>
+              </div>
+              <div class='side-nav__text'>検索</div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to notifications_path, class: "side-nav__link" do %>
+              <div class='side-nav__icon-outer'>
+                <% if unchecked_notifications.any? %>
+                  <span class="position-relative">
+                    <i class="far fa-bell side-nav__icon"></i>
+                    <i class="fas fa-circle side-nav__icon-circle position-absolute"></i>
+                  </span>
+                <% else %>
+                  <i class="far fa-bell fa-lg"></i>
+                <% end %>
+              </div>
+              <div class='side-nav__text'>通知</div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to favorites_user_path(user), class: "side-nav__link" do %>
+              <div class='side-nav__icon-outer'>
+                <i class="far fa-bookmark side-nav__icon"></i>
+              </div>
+              <div class='side-nav__text'>ブックマーク</div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_path(user), class: "side-nav__link" do %>
+              <div class='side-nav__icon-outer'>
+                <%= attachment_image_tag(user, :profile_image, format: "jpg", size: "35x35", fallback: "no-image-icon.jpg", size: "35x35", class: "rounded-circle border") %>
+              </div>
+              <div class='side-nav__text'>マイページ</div>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'side-nav__link' do %>
+              <div class='side-nav__icon-outer'>
+                <i class='fas fa-sign-out-alt side-nav__icon'></i>
+              </div>
+              <div class='side-nav__text'>ログアウト</div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <div class='side-nav__post-box'>
+      <%= link_to 'New Post', new_post_path, remote: true, class: 'side-nav__post-btn btn__purple btn__lg' %>
+      <%= link_to '', new_post_path, remote: true, class: 'far fa-plus-square side-nav__post-icon' %>
+    </div>
+
+  </div>
+</div>
+
+<!-- モーダルウィンドウ(新規投稿) -->
+<div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

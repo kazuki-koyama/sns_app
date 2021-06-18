@@ -1,0 +1,35 @@
+<div class='header__box mx-auto d-flex px-3'>
+  <!-- 左寄せ部分 -->
+  <div class='header__title-box py-3'>
+    <%= link_to root_path do %>
+      <%= image_tag "/assets/logo-sm.png" %>
+    <% end %>
+  </div>
+
+  <!-- 右寄せ部分 -->
+  <div class='header__content-box py-3 ml-auto'>
+    <%= link_to 'ホーム', home_path, class: 'header__content' %>
+    <%= link_to '検索', posts_path, class: 'header__content' %>
+    <%= link_to '通知', notifications_path, class: 'header__content' %>
+    <%= link_to 'マイページ', user_path(current_user), class: 'header__content' %>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__content' %>
+  </div>
+
+  <!--右寄せ部分 (画面幅が小さい時用のハンバーガーメニュー) -->
+  <input id='header_checkbox' class='header__hamburger-checkbox' type='checkbox'>
+  <label for='header_checkbox' class='header__hamburger-icon py-3 ml-auto'>
+    <i class="fas fa-ellipsis-h header__icon"></i>
+  </label>
+  <!--コンテンツ-->
+  <div class='header__hamburger-box'>
+    <label for='header_checkbox' class='header__hamburger-close'><i class="fas fa-times"></i></label>
+    <%= link_to 'ホーム', home_path, class: 'header__hamburger-content' %>
+    <%= link_to '検索', posts_path, class: 'header__hamburger-content' %>
+    <%= link_to '通知', notifications_path, class: 'header__hamburger-content' %>
+    <%= link_to 'ブックマーク', favorites_user_path(current_user), class: 'header__hamburger-content' %>
+    <%= link_to 'マイページ', user_path(current_user), class: 'header__hamburger-content' %>
+    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__hamburger-content' %>
+  </div>
+  <!--背景-->
+  <label for='header_checkbox' class='header__hamburger-back'></label>
+</div>

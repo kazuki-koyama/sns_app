@@ -4,102 +4,24 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="fixed-top bg-white">
-      <div class="headnav text-right">
+    <div class="bg-light">
+      <header class='header border-bottom bg-white'>
         <% if admin_signed_in? %>
-
-          <!-- 仮置き  -->
-          <div class="search-form text-center">
-            <%= form_with url: search_path, method: :get, local: true do |f| %>
-              <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
-              <% f.submit %>
-            <% end %>
-          </div>
-          <!---->
-
-          <%= link_to "ユーザー一覧", admin_users_path %>
-          <%= link_to "Log out", destroy_admin_session_path, method: :delete %>
+          <%= render 'layouts/header-admin' %>
         <% elsif user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Log in", new_user_session_path, class: "fas fa-sign-in-alt" %>
+          <%= render 'layouts/header-user' %>
         <% end %>
-      </div>
-    </header>
+      </header>
 
-    <div class="wrapper mt-5">
-
-      <% unless admin_signed_in? %>
-      <nav class="sidenav">
-        <ul>
-          <% if user_signed_in? %>
-            <li><%= link_to "ホーム", home_path, class: "fas fa-home fa-lg" %></li>
-            <li><%= link_to  "検索", posts_path, class: "fas fa-search fa-lg" %></li>
-            <li>
-              <%= link_to notifications_path do %>
-                <% if unchecked_notifications.any? %>
-                  <span class="fa-stack position-relative">
-                    <i class="far fa-bell fa-lg fa-stack-1x">通知</i>
-                    <i class="fas fa-circle fa-lg n-circle fa-stack-1x position-absolute"></i>
-                  </span>
-                <% else %>
-                  <i class="far fa-bell fa-lg">通知</i>
-                <% end %>
-              <% end %>
-            </li>
-            <li><%= link_to "ブックマーク", favorites_user_path(current_user), class: "far fa-bookmark fa-lg" %></li>
-            <li><%= link_to "マイページ", user_path(current_user), class: "far fa-user fa-lg" %></li>
-            <li><%= link_to "New Post", new_post_path, remote: true, class: "btn btn-success" %></li>
-            <!-- 新規投稿作成モーダルウィンドウの表示領域 -->
-            <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-          <% end %>
-        </ul>
-      </nav>
-      <% end %>
-
-      <% if admin_signed_in? %>
-        <div class="mx-auto">
-          <%= yield %>
-        </div>
-      <% else %>
-      <main class="contents">
-        <h5>
-          <% if request.path.include?("edit") || request.path.include?("follow") || request.path.include?("search") %>
-            <%= link_to "←", 'javascript:history.back()' %>
-          <% end %>
-          <%= yield(:title) %>
-        </h5>
-        <div class="mt-5">
-          <%= yield %>
-        </div>
+      <main>
+        <%= yield %>
       </main>
-      <% end %>
-
-      <% unless admin_signed_in? %>
-      <aside>
-        <h5>おすすめ</h5>
-        <%= link_to "すべて見る", users_path %> </br>
-        <% @users.first(5).each do |user| %>
-          <div id="user_<%= user.id %>">
-            <%= link_to user_path(user) do %>
-              <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
-              <%= user.name %>
-            <% end %>
-            <% if user_signed_in? %>
-              <span class="follow-btn">
-                <%= render "public/users/follow-btn", user: user %>
-              </span>
-            <% end %>
-          </div>
-        <% end %>
-      </aside>
-      <% end %>
-
     </div>
   </body>
 </html>

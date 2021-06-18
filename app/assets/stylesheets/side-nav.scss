@@ -1,0 +1,86 @@
+.side-nav {
+
+  // side-navリンクbox
+  &__link {
+    padding: 10px 0px 10px 20px;
+    display: flex;
+  }
+  &__link:hover {
+    background-color: #f0f0f0;
+  }
+  &__icon-outer {
+    width: 40px;
+    text-align: center;
+  }
+  &__icon {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  &__icon-circle {
+    font-size: 5px;
+    top: -14px;
+    right: -5px;
+    color: #ce9eff;
+  }
+  &__text {
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 30px;
+  }
+
+  // 投稿box
+  &__post-box {
+    margin: 20px;
+    text-align: center;
+  }
+  &__post-icon {
+    display: none !important;
+    font-size: 40px;
+    color: #ce9eff;
+  }
+  &__post-icon:hover,
+  &__post-icon:active {
+    color: #bf7fff;
+  }
+}
+
+@media screen and (max-width:1125px) {
+  .side-nav {
+
+    // side-navリンクbox
+    &__link {
+      padding-left: 0;
+      display: block;
+    }
+    &__icon-outer {
+      width: 35px;
+      margin: 0 auto;
+    }
+    &__text {
+      padding-left: 0;
+      font-size: 8px;
+      text-align: center;
+    }
+
+    // 投稿box
+    &__post-btn {
+      display: none;
+    }
+    &__post-icon {
+      display: inline-block !important;
+    }
+  }
+}
+
+@media screen and (max-width:690px) {
+  .side-nav {
+    &__text {
+      line-height: 20px;
+    }
+    &__link {
+      padding: 10px, 0px, 0px, 0px;
+      height: 64px;
+    }
+  }
+}

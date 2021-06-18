@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_users
-    @users = User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc).first(5)
   end
 end

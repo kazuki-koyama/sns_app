@@ -4,13 +4,13 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.includes(:comments)
+    @posts = @user.posts.includes(:comments).page(params[:page]).without_count.per(10)
     # @posts = @user.joins(:comments).eager_load(:comments)
     # comments = post.comments.includes(:user)
   end
 
   def index
-    @users = User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc).page(params[:page]).without_count.per(15)
   end
 
   def edit
