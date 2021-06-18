@@ -1,11 +1,25 @@
-<div id="user_<%= user.id %>">
-  <%= link_to user_path(user) do %>
-    <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
-    <%= user.name %>
-  <% end %>
-  <% if user_signed_in? %>
-    <span class="follow-btn">
-      <%= render "public/users/follow-btn", user: user %>
-    </span>
-  <% end %>
+<div class='main-aside h-100'>
+  <div class='sticky-top'>
+
+    <div class='d-flex pt-4 pb-2'>
+      <h5 class='main-aside__title mr-auto'>おすすめ</h5>
+      <%= link_to "すべて見る", users_path, class: 'main-aside__link font-weight-bold' %> </br>
+    </div>
+
+    <% users.each do |user| %>
+      <div id="user_<%= user.id %>">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>
+          <span class='main-aside__user-name'><%= user.name %></span>
+        <% end %>
+        <% if user_signed_in? %>
+          <span class="follow-btn">
+            <%= render "public/users/follow-btn", user: user %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= render 'public/shared/footer' %>
+  </div>
 </div>

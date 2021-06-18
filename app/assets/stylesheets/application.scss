@@ -79,11 +79,11 @@ a:hover {
   }
   &__main {
     width: 875px;
-    display: flex;
-  }
-  &__main-contens {
-    min-width: 600px;
     min-height: 100vh;
+    // display: flex;
+  }
+  &__main-contents {
+    max-width: 600px;
     margin-right: 25px;
   }
   &__main-aside {
@@ -109,6 +109,9 @@ a:hover {
   .home {
     &__main-aside {
       display: none;
+    }
+    &__main-contents {
+      margin: 0 auto;
     }
   }
 }

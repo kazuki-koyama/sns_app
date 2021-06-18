@@ -1,3 +1,5 @@
+<% provide(:title, "おすすめ") %>
+
 <div class='home'>
   <div class='home__box'>
 
@@ -5,19 +7,18 @@
       <%= render 'public/shared/side-nav', user: current_user %>
     </div>
 
-    <div class='home__main'>
-      <div class='home__main-contens'>
-        <h5 class='p-3'><%= link_to '←', 'javascript:history.back()', class: 'link__purple' %><span class='pl-3 font-weight-bold'>おすすめ</span></h5>
-        <%= render partial: 'index', collection: @users, as: 'user' %>
-        <div class='text-center py-4'>
-          <%= link_to_prev_page @users, '<< prev' %>
-          <%= link_to_next_page @users, 'next >>' %>
-        </div>
+    <div class='home__main bg-white'>
+      <h5 class='p-3'>
+        <%= link_to '←', 'javascript:history.back()', class: 'link__purple' %>
+        <span class='pl-3 font-weight-bold'>おすすめ</span>
+      </h5>
+      <%= render partial: 'index', collection: @users, as: 'user' %>
+      <div class='text-center py-4'>
+        <%= link_to_prev_page @users, '<< prev' %>
+        <%= link_to_next_page @users, 'next >>' %>
       </div>
 
-      <aside class='home__main-aside'>
-
-      </aside>
+      <%= render 'public/shared/footer' %>
     </div>
 
     <div class='home__bottom-nav'>

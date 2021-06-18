@@ -1,3 +1,5 @@
+<% provide(:title, "検索") %>
+
 <div class='home'>
   <div class='home__box'>
 
@@ -5,10 +7,10 @@
       <%= render 'public/shared/side-nav', user: current_user %>
     </div>
 
-    <div class='home__main'>
+    <div class='home__main d-flex'>
 
-      <div class='home__main-contens'>
-        <div class="text-center">
+      <div class='home__main-contents'>
+        <div class="text-center py-3">
           <%= form_with url: search_path, method: :get, local: true do |f| %>
             <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
             <% f.submit %>
@@ -21,9 +23,7 @@
       </div>
 
       <aside class='home__main-aside'>
-        <h5>おすすめ</h5>
-        <%= link_to "すべて見る", users_path %> </br>
-        <%= render partial: 'public/shared/main-aside', collection: @users, as: 'user' %>
+        <%= render 'public/shared/main-aside', users: @users %>
       </aside>
     </div>
 

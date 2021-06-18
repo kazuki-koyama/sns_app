@@ -1,10 +1,5 @@
 .side-nav {
 
-  &__sticky {
-    position: sticky;
-    top: 0;
-  }
-
   // side-navリンクbox
   &__link {
     padding: 10px 0px 10px 20px;
@@ -47,17 +42,6 @@
   &__post-icon:hover,
   &__post-icon:active {
     color: #bf7fff;
-  }
-
-  // フッター
-  &__footer {
-    font-size: 10px;
-    position: relative;
-  }
-  &__footer-text {
-    position: absolute;
-    top: 500px;
-    left: 25px;
   }
 }
 

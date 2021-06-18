@@ -1,7 +1,7 @@
 <div class='side-nav h-100'>
-  <div class='side-nav__sticky'>
+  <div class='sticky-top'>
 
-    <nav class='pb-3'>
+    <nav class='py-3'>
       <ul>
         <% if user_signed_in? %>
           <li>
@@ -67,10 +67,6 @@
       <%= link_to 'New Post', new_post_path, remote: true, class: 'side-nav__post-btn btn__purple' %>
       <%= link_to '', new_post_path, remote: true, class: 'far fa-plus-square side-nav__post-icon' %>
     </div>
-
-    <footer class='side-nav__footer text-center'>
-      <p class='side-nav__footer-text text-muted'>Copyright © 2021 Change All Rights Reserved.</p>
-    </footer>
 
   </div>
 </div>
