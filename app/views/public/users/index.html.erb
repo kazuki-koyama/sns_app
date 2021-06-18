@@ -1,8 +1,8 @@
 <div class='home'>
   <div class='home__box'>
 
-    <div class='home__sidenav'>
-      <%= render 'public/shared/sidenav', user: current_user %>
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
     </div>
 
     <div class='home__main'>
@@ -17,6 +17,7 @@
     </div>
 
     <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
     </div>
 
   </div>

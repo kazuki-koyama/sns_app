@@ -1,11 +1,11 @@
-.sidenav {
+.side-nav {
 
   &__sticky {
     position: sticky;
     top: 0;
   }
 
-  // sidenavリンクbox
+  // side-navリンクbox
   &__link {
     padding: 10px 0px 10px 20px;
     display: flex;
@@ -62,9 +62,9 @@
 }
 
 @media screen and (max-width:1125px) {
-  .sidenav {
+  .side-nav {
 
-    // sidenavリンクbox
+    // side-navリンクbox
     &__link {
       padding-left: 0;
       display: block;
@@ -85,6 +85,18 @@
     }
     &__post-icon {
       display: inline-block !important;
+    }
+  }
+}
+
+@media screen and (max-width:690px) {
+  .side-nav {
+    &__text {
+      line-height: 20px;
+    }
+    &__link {
+      padding: 10px, 0px, 0px, 0px;
+      height: 64px;
     }
   }
 }

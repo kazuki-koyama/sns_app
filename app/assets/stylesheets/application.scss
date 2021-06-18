@@ -25,9 +25,10 @@
   // width: 1150px;
 }
 
-ul {
+ul, ol, dl {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 a {
@@ -47,7 +48,7 @@ a:hover {
     display: flex;
     margin: 0 auto;
   }
-  &__sidenav {
+  &__side-nav {
     min-width: 250px;
   }
   &__main {
@@ -95,7 +96,7 @@ a:hover {
     &__box {
       justify-content: center;
     }
-    &__sidenav {
+    &__side-nav {
       min-width: 90px;
     }
   }
@@ -111,7 +112,7 @@ a:hover {
 
 @media screen and (max-width:690px) {
   .home {
-    &__sidenav {
+    &__side-nav {
       display: none;
     }
     &__main {
