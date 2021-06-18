@@ -7,15 +7,14 @@
 
     <div class='home__main'>
       <div class='home__main-contens'>
-        <h5><%= link_to '←', 'javascript:history.back()' %>おすすめ</h5>
+        <h5 class='p-3'><%= link_to '←', 'javascript:history.back()', class: 'link__purple' %><span class='pl-3 font-weight-bold'>おすすめ</span></h5>
         <%= render partial: 'index', collection: @users, as: 'user' %>
       </div>
-      
+
       <aside class='home__main-aside'>
-        
+
       </aside>
     </div>
-
 
     <div class='home__bottom-nav'>
     </div>

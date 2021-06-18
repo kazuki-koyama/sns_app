@@ -1,13 +1,14 @@
 <table class='table table-borderless'>
   <tbody>
     <tr id="user_<%= user.id %>">
-      <td>
+      <td class='w-25 text-center'>
         <%= link_to user_path(user) do %>
-          <%= attachment_image_tag user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle border" %>
+          <%= attachment_image_tag user, :profile_image, format: "jpg", size: "35x35", fallback: "no-image-icon.jpg", size: "35x35", class: "rounded-circle border" %>
         <% end %>
       </td>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td class="follow-btn"><%= render "public/users/follow-btn", user: user %></td>
+      <td class='w-25'><%= link_to user.name, user_path(user) %></td>
+      <td class="w-50 text-center follow-btn"><%= render "public/users/follow-btn", user: user %></td>
+      <td></td>
     </tr>
   </tbody>
 </table>

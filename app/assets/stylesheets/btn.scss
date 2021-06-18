@@ -12,9 +12,18 @@
     color: #fff;
     background-color: #bf7fff;
   }
-
 }
 
 .heart_red {
   color: #e54747;
+}
+
+.link {
+  &__purple {
+    color: #ce9eff;
+  }
+  &__purple:hover,
+  &__purple:active {
+    color: #bf7fff;
+  }
 }
