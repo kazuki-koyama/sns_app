@@ -1,5 +1,3 @@
-<h5>おすすめ</h5>
-<%= link_to "すべて見る", users_path %> </br>
 <div id="user_<%= user.id %>">
   <%= link_to user_path(user) do %>
     <%= attachment_image_tag user, :profile_image, format: "jpg", size: "22x22", fallback: "no-image-icon.jpg", size: "22x22", class: "rounded-circle border" %>

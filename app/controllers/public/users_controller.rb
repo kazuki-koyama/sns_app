@@ -10,7 +10,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.order(created_at: :desc)
+    @users = User.all.order(created_at: :desc).page(params[:page]).without_count.per(15)
   end
 
   def edit

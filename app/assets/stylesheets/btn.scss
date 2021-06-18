@@ -5,12 +5,14 @@
     background-color: #ce9eff;
     color: #fff;
     border-radius: 20px;
+    border: 1px solid #ce9eff;
     text-align: center;
   }
   &__purple:hover,
   &__purple:active {
     color: #fff;
     background-color: #bf7fff;
+    border: 1px solid #bf7fff;
   }
 }
 

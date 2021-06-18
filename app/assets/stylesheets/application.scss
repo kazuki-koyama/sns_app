@@ -41,31 +41,6 @@ a:hover {
   cursor: pointer;
 }
 
-// 全体レイアウト
-.home {
-  &__box {
-    max-width: 1200px;
-    display: flex;
-    margin: 0 auto;
-  }
-  &__side-nav {
-    min-width: 250px;
-  }
-  &__main {
-    width: 875px;
-    padding-left: 10px;
-  }
-  &__main-contens {
-    min-width: 600px;
-    margin-right: 25px;
-    background-color: #fff;
-  }
-  &__main-aside {
-    width: 250px;
-  }
-}
-
-// 以下、個別スタイル
 .post-images img {
   width: 299px;
 }
@@ -91,10 +66,38 @@ a:hover {
   transform: translateY(-50%);
 }
 
+
+// 全体レイアウト
+.home {
+  &__box {
+    max-width: 1200px;
+    display: flex;
+    margin: 0 auto;
+  }
+  &__side-nav {
+    min-width: 250px;
+  }
+  &__main {
+    width: 875px;
+    display: flex;
+  }
+  &__main-contens {
+    min-width: 600px;
+    min-height: 100vh;
+    margin-right: 25px;
+  }
+  &__main-aside {
+    width: 250px;
+  }
+}
+
 @media screen and (max-width:1125px) {
   .home {
     &__box {
       justify-content: center;
+    }
+    &__main {
+      padding-left: 10px;
     }
     &__side-nav {
       min-width: 90px;
