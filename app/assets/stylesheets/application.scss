@@ -22,7 +22,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // width: 1150px;
 }
 
 ul, ol, dl {
@@ -40,7 +39,13 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+a[href*="hashtag"] {
+	color: #0F376B;
+}
 
+.post-images {
+  background-color: black;
+}
 .post-images img {
   width: 299px;
 }
@@ -80,10 +85,10 @@ a:hover {
   &__main {
     width: 875px;
     min-height: 100vh;
-    // display: flex;
   }
   &__main-contents {
     max-width: 600px;
+    min-width: 600px;
     margin-right: 25px;
   }
   &__main-aside {
@@ -95,9 +100,6 @@ a:hover {
   .home {
     &__box {
       justify-content: center;
-    }
-    &__main {
-      padding-left: 10px;
     }
     &__side-nav {
       min-width: 90px;

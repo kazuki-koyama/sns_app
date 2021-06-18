@@ -1,10 +1,12 @@
-<% comment_user = comment.user %>
-<%= link_to user_path(comment_user), class: "user_#{comment_user.id}" do %>
-	<%= attachment_image_tag comment_user, :profile_image, size: "22x22", fallback: "no_image.jpg", size: "22x22", class: "rounded-circle border" %>
-	<span class="font-weight-bold"><%= comment_user.name %></span>
-<% end %>
-<%= comment.comment %>
-<% if current_user == comment_user %>
-   <%= link_to "", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt" %>
-<% end %>
-</br>
+<div class='position-relative pl-2'>
+  <% comment_user = comment.user %>
+  <%= link_to user_path(comment_user), class: "user_#{comment_user.id}" do %>
+  	<%= attachment_image_tag comment_user, :profile_image, size: "22x22", fallback: "no_image.jpg", size: "22x22", class: "rounded-circle border" %>
+  	<span class="font-weight-bold pr-1"><%= comment_user.name %></span>
+  <% end %>
+  <%= comment.comment %>
+  <% if current_user == comment_user %>
+     <%= link_to "", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true, class: "far fa-trash-alt link__right" %>
+  <% end %>
+  </br>
+</div>

@@ -1,12 +1,19 @@
 .btn {
 
-  &__purple {
+  &__lg {
     padding: 8px 28px;
+    text-align: center;
+    border-radius: 20px;
+  }
+  &__text {
+    background: none;
+    border: none;
+  }
+
+  &__purple {
     background-color: #ce9eff;
     color: #fff;
-    border-radius: 20px;
     border: 1px solid #ce9eff;
-    text-align: center;
   }
   &__purple:hover,
   &__purple:active {
@@ -14,10 +21,6 @@
     background-color: #bf7fff;
     border: 1px solid #bf7fff;
   }
-}
-
-.heart_red {
-  color: #e54747;
 }
 
 .link {
@@ -28,4 +31,19 @@
   &__purple:active {
     color: #bf7fff;
   }
+
+  &__edit {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+  }
+  &__right {
+    position: absolute;
+    top: 4px;
+    right: 15px;
+  }
+}
+
+.heart_red {
+  color: #e54747;
 }
