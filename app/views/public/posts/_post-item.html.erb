@@ -10,7 +10,7 @@
       <%= link_to "", edit_post_path(post), class: "far fa-edit link__edit" %>
     <% end %> </br>
   </div>
-  <div class='px-3 pb-2'>
+  <div class='px-3 pb-2 text-break'>
     <%= render_with_hashtags(safe_join(post.caption.split("\n"), tag(:br))) %>
   </div>
 
