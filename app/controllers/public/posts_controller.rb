@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
 
   def hashtag
     @hashtag = Hashtag.find_by(hashname: params[:name])
-    @posts = @hashtag.posts
+    @posts = @hashtag.posts.page(params[:page]).without_count.per(10)
   end
 
   private
