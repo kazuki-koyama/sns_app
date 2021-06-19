@@ -44,7 +44,7 @@
       <li class='bottom-nav__box'>
         <%= link_to user_path(user), class: "side-nav__link" do %>
           <div class='side-nav__icon-outer'>
-            <%= attachment_image_tag(user, :profile_image, format: "jpg", size: "35x35", fallback: "no-image-icon.jpg", size: "35x35", class: "rounded-circle border") %>
+            <%= attachment_image_tag(user, :profile_image, format: "jpg", size: "35x35", fallback: "no-image-icon.jpg", size: "35x35", class: "rounded-circle") %>
           </div>
           <div class='side-nav__text'>マイページ</div>
         <% end %>

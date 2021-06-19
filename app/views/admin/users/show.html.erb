@@ -2,7 +2,7 @@
   <p class="text-success"><%= flash[:notice] %></p>
 <% end %>
 <div class="user-info pb-2 mb-3">
-  <%= attachment_image_tag @user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+  <%= attachment_image_tag @user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle shadow" %>
   <%= @user.name %> </br>
   <%= @user.introduction %>
 </div>
