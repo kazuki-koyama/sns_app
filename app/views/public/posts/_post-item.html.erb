@@ -36,7 +36,7 @@
     </div>
 
     <span class="comments">
-      <%= render partial: "public/comments/index", collection: post.comments, as: "comment" %>
+      <%= render partial: "public/comments/index", collection: post.comments.includes(:user), as: "comment" %>
     </span>
 
     <div class='py-2 text-center'>

@@ -1,4 +1,5 @@
 <% provide(:title, "通知") %>
+<!--自分からの通知は非表示-->
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 
 <div class='home'>
