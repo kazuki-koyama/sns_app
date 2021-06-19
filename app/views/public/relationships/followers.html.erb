@@ -1,6 +1,33 @@
 <% provide(:title, "フォロワー") %>
-<% if @users.exists? %>
-  <%= render 'public/users/index', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
+    </div>
+
+    <div class='home__main bg-white'>
+      <h5 class='p-3'>
+        <%= link_to '←', 'javascript:history.back()', class: 'link__purple' %>
+        <span class='pl-3 font-weight-bold'>フォロワー</span>
+      </h5>
+      <% if @users.exists? %>
+        <%= render partial: 'public/users/index', collection: @users, as: 'user' %>
+        <div class='text-center py-4'>
+          <%= link_to_prev_page @users, '<< prev' %>
+          <%= link_to_next_page @users, 'next >>' %>
+        </div>
+      <% else %>
+        <p>フォロワーはいません</p>
+      <% end %>
+
+      <%= render 'public/shared/footer' %>
+    </div>
+
+    <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
+    </div>
+
+  </div>
+</div>

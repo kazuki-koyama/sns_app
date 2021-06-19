@@ -27,7 +27,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_posts = Post.includes(:user, :comments).find(favorites)
+    @favorite_posts = Kaminari.paginate_array(Post.includes(:user, :comments).find(favorites)).page(params[:page]).per(20)
   end
 
   def unsubscribe
