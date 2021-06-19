@@ -1,34 +1,38 @@
-<div class="user-info pb-2 mb-3 border-bottom">
-  <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+<div class="info my-4 border-bottom px-4">
+  <header class='info__header d-flex pt-3 pb-5'>
 
-  <table class='table table-borderless'>
-    <tbody>
-      <tr id="user_<%= user.id %>">
-        <td><%= user.name %></td>
-        <td colspan="2" class="follow-btn">
+    <div class='info__profile-image mr-5'>
+      <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+    </div>
+    <section id="user_<%= user.id %>">
+      <div class='d-flex'>
+        <h2><%= user.name %></h2>
+        <div class='follow-btn ml-4'>
           <% if user != current_user %>
             <%= render "follow-btn", user: user %>
           <% else %>
             <%= link_to "プロフィールを編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" %>
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>投稿<%= user.posts.count %>件</td>
-        <td>
+        </div>
+      </div>
+      <ul class='d-flex my-3 justify-content-between pr-5'>
+        <li>投稿<%= user.posts.count %>件</li>
+        <li>
           <%= link_to "フォロワー#{user.followers.count}人", user_followers_path(user) %>
-        </td>
-        <td id="followings">
+        </li>
+        <li id="followings">
           <%= link_to "フォロー中#{user.followings.count}人", user_followings_path(user) %>
-        </td>
-    </tbody>
-  </table>
-  <p><%= user.introduction %></p>
+        </li>
+      </ul>
+      <p class='info__caption'><%= user.introduction %></p>
+    </section>
+
+  </header>
 </div>
 
-<% if @user == current_user %>
-  <div class="tab text-center">
-    <%= link_to "投稿", user_path(@user), class: "far fa-images" %>
-    <%= link_to "ブックマーク", favorites_user_path(@user), class: "far fa-bookmark" %>
+<% if user == current_user %>
+  <div class="text-center">
+    <%= link_to "投稿", user_path(user), class: "far fa-images mr-4" %>
+    <%= link_to "ブックマーク", favorites_user_path(user), class: "far fa-bookmark" %>
   </div>
 <% end %>

@@ -42,6 +42,9 @@ a:hover {
 a[href*="hashtag"] {
 	color: #0F376B;
 }
+a:before {
+  margin-right: 5px;
+}
 
 .post-images {
   background-color: black;

@@ -1,7 +1,32 @@
-<%= render "user-info", user: @user %>
+<% provide(:title, "#{@user.name}") %>
 
-<div class="posts">
-  <% if @favorite_posts.present? %>
-    <%= render partial: "public/posts/post-item", collection: @favorite_posts, as: "post" %>
-  <% end %>
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
+    </div>
+
+    <div class='home__main d-flex'>
+
+      <div class='home__main-contents'>
+        <%= render "user-info", user: @user %>
+        <div class="posts jscroll mt-4">
+          <% if @favorite_posts.present? %>
+            <%= render partial: "public/posts/post-item", collection: @favorite_posts, as: "post" %>
+            <%= paginate @favorite_posts %>
+          <% end %>
+        </div>
+      </div>
+
+      <aside class='home__main-aside'>
+        <%= render 'public/shared/main-aside', users: @users %>
+      </aside>
+    </div>
+
+    <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
+    </div>
+
+  </div>
 </div>

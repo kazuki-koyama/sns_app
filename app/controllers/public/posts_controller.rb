@@ -16,6 +16,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.includes(:user, :comments).find(params[:id])
+    @user = @post.user
     respond_to do |format|
       format.html
       format.js
@@ -32,7 +33,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "updated post successfully"
+      redirect_to post_path(@post), notice: "updated post successfully"
     else
       render "edit"
     end
