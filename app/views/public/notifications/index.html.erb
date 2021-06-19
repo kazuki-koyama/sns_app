@@ -26,8 +26,15 @@
         <% end %>
       </div>
 
-      <aside class='home__main-aside'>
-        <%= render 'public/shared/main-aside', users: @users %>
+      <aside class='home__main-aside h-100'>
+        <div class='sticky-top'>
+          <div class='d-flex pt-4 pb-2'>
+            <h5 class='main-aside__title mr-auto'>おすすめ</h5>
+            <%= link_to "すべて見る", users_path, class: 'main-aside__link font-weight-bold' %> </br>
+          </div>
+          <%= render partial: "public/shared/main-aside", collection: @users, as: "user" %>
+          <%= render 'public/shared/footer' %>
+        </div>
       </aside>
     </div>
 
