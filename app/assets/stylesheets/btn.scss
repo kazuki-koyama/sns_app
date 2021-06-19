@@ -24,7 +24,26 @@
   }
 
   &__follow {
-
+    border: 1px solid #0096F6;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 9px;
+    font-size: 14px;
+    color: white;
+    background-color: #0096F6;
+  }
+  &__follow:hover,
+  &__follow:active {
+    color: white;
+    background-color: #1f8eed;
+  }
+  &__unfollow,
+  &__edit-profile {
+    border: 1px solid #DEE2E6;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 9px;
+    font-size: 14px;
   }
 }
 
