@@ -1,6 +1,26 @@
-<h5>本当に退会しますか？</h5>
-<p class="text-center my-5">退会する場合は、「退会する」をクリックしてください。</p>
-<div class="d-flex justify-content-center">
-	<%= link_to "マイページに戻る", user_path(current_user), class: "btn btn-primary" %>
-	<%= link_to "退会する", withdraw_user_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-danger ml-5" %>
+<% provide(:title, "退会確認") %>
+
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
+    </div>
+
+    <div class='home__main bg-white'>
+      <h5 class='py-5 text-center font-weight-bold'>本当に退会しますか？</h5>
+			<p class="text-center py-5">退会する場合は、「退会する」をクリックしてください。</p>
+			<div class="d-flex justify-content-center">
+				<%= link_to "マイページに戻る", user_path(current_user), class: "btn btn-info" %>
+				<%= link_to "退会する", withdraw_user_path, method: :patch, "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: "btn btn-secondary ml-5" %>
+			</div>
+
+      <%= render 'public/shared/footer' %>
+    </div>
+
+    <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
+    </div>
+
+  </div>
 </div>
