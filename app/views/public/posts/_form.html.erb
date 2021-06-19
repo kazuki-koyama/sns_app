@@ -11,16 +11,16 @@
     <div class="modal-body">
       <%= form_with model: @post do |f| %>
         <div class="form-group">
-          <%= f.label :before_image %>
-          <%= f.attachment_field :before_image, class: 'form-control' %>
+          <%= f.label :before_image %></br>
+          <%= f.attachment_field :before_image %>
         </div>
         <div class="form-group">
-          <%= f.label :after_image %>
-          <%= f.attachment_field :after_image, class: 'form-control' %>
+          <%= f.label :after_image %></br>
+          <%= f.attachment_field :after_image %>
         </div>
         <div class="form-group">
           <%= f.label :caption %>
-          <%= f.text_area :caption, class: "form-control" %>
+          <%= f.text_area :caption, autofocus: true, autocomplete: "caption", class: 'form-control' %>
         </div>
 
         <div class="actions text-center py-3">
