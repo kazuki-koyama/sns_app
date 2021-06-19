@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:user, :comments).find(params[:id])
+    @post = Post.includes(:user).find(params[:id])
     @user = @post.user
     respond_to do |format|
       format.html
@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.includes(:user, :comments).order(created_at: :desc).page(params[:page]).without_count.per(10)
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page]).without_count.per(10)
   end
 
   def edit

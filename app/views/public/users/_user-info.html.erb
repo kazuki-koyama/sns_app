@@ -5,19 +5,19 @@
       <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
     </div>
     <section id="user_<%= user.id %>">
-      <div class='d-flex'>
-        <h2><%= user.name %></h2>
+      <div class='d-flex align-items-center'>
+        <h2 class='mb-0'><%= user.name %></h2>
         <div class='follow-btn ml-4'>
           <% if user != current_user %>
-            <%= render "follow-btn", user: user %>
+            <%= render "public/users/follow-btn", user: user %>
           <% else %>
-            <%= link_to "プロフィールを編集", edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" %>
+            <%= link_to "プロフィールを編集", edit_user_path(user), class: "btn__edit-profile" %>
           <% end %>
         </div>
       </div>
-      <ul class='d-flex my-3 justify-content-between pr-5'>
-        <li>投稿<%= user.posts.count %>件</li>
-        <li>
+      <ul class='d-flex my-3'>
+        <li class='mr-2'>投稿<%= user.posts.count %>件</li>
+        <li class='mr-2'>
           <%= link_to "フォロワー#{user.followers.count}人", user_followers_path(user) %>
         </li>
         <li id="followings">

@@ -4,9 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.includes(:comments).page(params[:page]).without_count.per(10)
-    # @posts = @user.joins(:comments).eager_load(:comments)
-    # comments = post.comments.includes(:user)
+    @posts = @user.posts.page(params[:page]).without_count.per(10)
   end
 
   def index
@@ -27,7 +25,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_posts = Kaminari.paginate_array(Post.includes(:user, :comments).find(favorites)).page(params[:page]).per(20)
+    @favorite_posts = Kaminari.paginate_array(Post.includes(:user).find(favorites)).page(params[:page]).per(20)
   end
 
   def unsubscribe
