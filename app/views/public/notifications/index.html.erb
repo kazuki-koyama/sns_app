@@ -1,4 +1,5 @@
 <% provide(:title, "通知") %>
+<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 
 <div class='home'>
   <div class='home__box'>
@@ -9,15 +10,18 @@
 
     <div class='home__main d-flex'>
 
-      <div class='home__main-contents'>
+      <div class='home__main-contents bg-white'>
         <h5 class='p-3'>
           <%= link_to '←', 'javascript:history.back()', class: 'link__purple' %>
           <span class='pl-3 font-weight-bold'>お知らせ</span>
         </h5>
-        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
         <% if notifications.exists? %>
-          <%= render notifications %>
-          <%= paginate(notifications) %>
+          <div class="jscroll">
+            <%= render notifications %>
+            <%= link_to_next_page notifications, "next >>", class: "next" %>
+          </div>
+        <% else %>
+          <p>なし</p>
         <% end %>
       </div>
 
