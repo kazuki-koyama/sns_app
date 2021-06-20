@@ -17,6 +17,10 @@ Rails.application.routes.draw do
       passwords:     'public/users/passwords',
       registrations: 'public/users/registrations'
     }
+    devise_scope :user do
+      post 'public/users/guest_sign_in' => 'public/users/sessions#guest_sign_in'
+    end
+
     root 'homes#top'
     get 'home' => 'homes#home'
     get '/post/hashtag/:name' => 'posts#hashtag'
