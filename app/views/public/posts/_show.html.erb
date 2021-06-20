@@ -32,7 +32,7 @@
         <div>
           <div class="post-header p-2">
             <%= link_to user_path(post.user) do %>
-              <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle border" %>
+              <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
               <span class="font-weight-bold ml-2"><%= post.user.name %></span>
             <% end %>
             <span class="small text-muted"> - <%= time_ago_in_words(post.created_at) %>前</span>

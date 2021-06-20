@@ -2,7 +2,7 @@
   <header class='info__header d-flex pt-3 pb-5'>
 
     <div class='info__profile-image mr-5'>
-      <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle border" %>
+      <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle shadow" %>
     </div>
     <section id="user_<%= user.id %>">
       <div class='d-flex align-items-center'>
