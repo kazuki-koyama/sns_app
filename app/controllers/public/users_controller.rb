@@ -32,9 +32,20 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    current_user.update(is_vaild: false)
+    user = current_user
+    if user.email == 'guest@example.com'
+      # ゲストユーザーは退会させず、プロフィールを初期化
+      user.name = 'ゲストユーザー'
+      user.is_valid = true
+      user.introduction = 'よろしくお願いします。'
+      user.profile_image_id = nil
+    else
+      # 一般ユーザーは退会させる
+      user.is_valid = false
+    end
+    user.save
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: 'ありがとうございました。またのご利用を心よりお待ちしております。'
   end
 
   private
