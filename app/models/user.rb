@@ -31,6 +31,7 @@ class User < ApplicationRecord
       user.introduction = 'よろしくおねがいします。'
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
+    end
   end
 
   def follow(user)

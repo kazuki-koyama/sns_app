@@ -44,6 +44,7 @@ class Public::Users::SessionsController < Devise::SessionsController
     root_path
   end
 
+  # 退会したユーザーがログインできないようにする
   def reject_inactive_user
     @user = User.find_by(email: params[:user][:email])
     if @user

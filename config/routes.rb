@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       registrations: 'public/users/registrations'
     }
     devise_scope :user do
-      post 'public/users/guest_sign_in' => 'public/users/sessions#guest_sign_in'
+      post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
     end
 
     root 'homes#top'
