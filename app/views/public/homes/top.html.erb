@@ -1,6 +1,33 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class='main-visual'>
+  <%# 左側 %>
+  <div class='main-visual__box-1'>
+    <div class='main-visual__box-1-content-1'>
+      <%= image_tag "/assets/logo-sm.png", class: 'main-visual__title' %>
+    </div>
+    <div class='main-visual__box-1-content-2'>
+      <p>お気に入りの投稿を</p>
+      <h3>見つけよう</h3>
+      <h3>共有しよう</h3>
+      <h3>語り合おう</h3>
+    </div>
+  </div>
 
-<%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
-<%= link_to 'ログイン', new_user_session_path %>
-<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+  <%# 右側 %>
+  <div class='main-visual__box-2'>
+    <div class='main-visual__notifications'>
+      <%= render 'layouts/flash-messages' %>
+    </div>
+    <div class='main-visual__box-2-content-1'>
+      <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary' %>
+      <br>
+      <br>
+      or
+      <br>
+      <br>
+      <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-success' %>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>

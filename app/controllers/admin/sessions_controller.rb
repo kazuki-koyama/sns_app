@@ -32,11 +32,11 @@ class Admin::SessionsController < Devise::SessionsController
     new_admin_session_path
   end
 
-  # ユーザー側でサインインしている場合はサインアウトする
+  # ユーザー側でサインインしている場合はログアウトする
   def sign_out_user
     return unless user_signed_in?
 
     sign_out(current_user)
-    flash[:warning] = 'ユーザー側サイトはサインアウトしました。'
+    flash[:warning] = 'ユーザー側サイトはログアウトしました。'
   end
 end
