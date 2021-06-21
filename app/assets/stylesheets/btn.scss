@@ -45,6 +45,16 @@
     padding: 5px 9px;
     font-size: 14px;
   }
+
+  &__sign-up {
+    border: 1px solid #ce9eff;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 9px;
+    font-size: 14px;
+    color: white;
+    background-color: #ce9eff;
+  }
 }
 
 .link {

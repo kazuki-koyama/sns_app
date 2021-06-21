@@ -1,33 +1,33 @@
 <div class='main-visual'>
-  <%# 左側 %>
+  <!--左側-->
   <div class='main-visual__box-1'>
-    <div class='main-visual__box-1-content-1'>
-      <%= image_tag "/assets/logo-sm.png", class: 'main-visual__title' %>
-    </div>
-    <div class='main-visual__box-1-content-2'>
-      <p>お気に入りの投稿を</p>
-      <h3>見つけよう</h3>
-      <h3>共有しよう</h3>
-      <h3>語り合おう</h3>
+    <div class='main-visual__box-1-content'>
+      <%= image_tag "/assets/logo-sm.png" %>
     </div>
   </div>
 
-  <%# 右側 %>
+  <!--右側-->
   <div class='main-visual__box-2'>
     <div class='main-visual__notifications'>
       <%= render 'layouts/flash-messages' %>
     </div>
-    <div class='main-visual__box-2-content-1'>
-      <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary' %>
-      <br>
-      <br>
-      or
-      <br>
-      <br>
-      <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-success' %>
-      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-      <br>
-      <br>
+    <div class='main-visual__box-2-content text-center p-3'>
+      <div class='main-visual__box-2-header mb-5'>
+        <h1 class='font-weight-bold my-5'>すべての変化が、ここに。</h1>
+        <h3 class='font-weight-bold my-3'>Changeをはじめよう</h3>
+      </div>
+
+      <div class='main-visual__box-2-btn p-3'>
+        <%= link_to '新規登録', new_user_registration_path, class: 'btn__sign-up' %>
+        <br>
+        <br>
+        <br>
+        <%= link_to 'ログイン', new_user_session_path, class: 'btn__follow' %>
+        or
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'btn__unfollow' %>
+        <br>
+        <br>
+      </div>
     </div>
   </div>
 </div>

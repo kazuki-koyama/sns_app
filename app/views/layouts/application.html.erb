@@ -12,17 +12,15 @@
 
   <body>
     <div class="bg-light">
-      <header class='header border-bottom bg-white'>
-        <% if admin_signed_in? %>
-          <%= render 'layouts/header-admin' %>
-        <% elsif user_signed_in? %>
-          <%= render 'layouts/header-user' %>
-        <% end %>
-      </header>
+      <!--ヘッダー-->
+      <% if admin_signed_in? %>
+        <%= render 'layouts/header-admin' %>
+      <% elsif user_signed_in? %>
+        <%= render 'layouts/header-user' %>
+      <% end %>
 
-      <main>
-        <%= yield %>
-      </main>
+      <!--メイン-->
+      <main><%= yield %></main>
     </div>
   </body>
 </html>
