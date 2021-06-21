@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Public::Users::PasswordsController < Devise::PasswordsController
+class Public::PasswordsController < Devise::PasswordsController
   before_action :ensure_normal_user, only: [:create]
 
   # GET /resource/password/new

@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
 
-  scope module: :admin do
-    devise_for :admins, controllers: {
-      sessions:      'admin/admins/sessions',
-      passwords:     'admin/admins/passwords',
-    }
-  end
+  # 管理者認証
+  devise_for :admins, controllers: {
+    sessions: 'admin/sessions',
+  }
 
+  # 管理者機能
   namespace :admin do
     resources :users, only: [:show, :index, :update]
   end
 
-  scope module: :public do
-    devise_for :users, controllers: {
-      sessions:      'public/users/sessions',
-      passwords:     'public/users/passwords',
-      registrations: 'public/users/registrations'
-    }
-    devise_scope :user do
-      post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
-    end
+  # ユーザー認証
+  devise_for :users, controllers: {
+    sessions:      'public/sessions',
+    passwords:     'public/passwords',
+    registrations: 'public/registrations'
+  }
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+  end
 
+  # ユーザー機能
+  scope module: :public do
     root 'homes#top'
     get 'home' => 'homes#home'
     get '/post/hashtag/:name' => 'posts#hashtag'
