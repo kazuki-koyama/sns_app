@@ -20,7 +20,7 @@
         <% else %>
           <span>
             <%= link_to post_path(notification.post) do %>
-              <strong><%= notification.post.user.name + "さんの投稿" %></strong>
+              <strong><%= Post.includes(:user).find_by(id: notification.post_id)&.user.name + "さんの投稿" %></strong>
             <% end %>
           </span>
         <% end %>
