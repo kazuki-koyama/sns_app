@@ -22,6 +22,18 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
+
+  # ゲストログイン機能
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = 'ゲストユーザー'
+      user.is_valid = true
+      user.introduction = 'よろしくおねがいします。'
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+    end
+  end
+
   def follow(user)
     relationships.create!(followed_id: user.id)
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin::Admins::SessionsController < Devise::SessionsController
+class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -30,5 +30,13 @@ class Admin::Admins::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(resource)
     new_admin_session_path
+  end
+
+  # ユーザー側でサインインしている場合はサインアウトする
+  def sign_out_user
+    return unless user_signed_in?
+
+    sign_out(current_user)
+    flash[:warning] = 'ユーザー側サイトはサインアウトしました。'
   end
 end
