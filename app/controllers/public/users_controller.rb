@@ -16,12 +16,12 @@ class Public::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "Updated successfully"
+      redirect_to user_path(@user), notice: "プロフィールを更新しました。"
     else
       render "edit"
     end
   end
-
+  
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
