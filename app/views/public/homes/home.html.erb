@@ -10,6 +10,7 @@
     <div class='home__main d-flex'>
 
       <div class='home__main-contents'>
+        <%= render 'layouts/flash-messages' %>
         <% if @posts.present? %>
           <div class="posts jscroll mt-4">
             <%= render partial: "public/posts/post-item", collection: @posts, as: "post" %>
