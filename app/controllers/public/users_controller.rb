@@ -21,11 +21,11 @@ class Public::UsersController < ApplicationController
       render "edit"
     end
   end
-  
+
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
-    @favorite_posts = Kaminari.paginate_array(Post.includes(:user).find(favorites)).page(params[:page]).per(20)
+    @favorite_posts = Kaminari.paginate_array(Post.includes(:user).order(created_at: :desc).find(favorites)).page(params[:page]).per(20)
   end
 
   def unsubscribe
