@@ -9,6 +9,7 @@
 
     <div class='home__main d-flex'>
       <div class='home__main-contents bg-white'>
+        <%= render "public/shared/error_messages", resource: @user %>
         <h5 class='p-3'>
           <%= link_to '←', 'javascript:history.back()', class: 'link__purple' %>
           <span class='pl-3 font-weight-bold'>プロフィールを編集</span>

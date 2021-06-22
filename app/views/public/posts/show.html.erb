@@ -7,9 +7,7 @@
 
     <div class='home__main d-flex'>
       <div class='home__main-contents'>
-        <% if flash[:notice] %>
-          <p class="text-success"><%= flash[:notice] %></p>
-        <% end %>
+        <%= render 'layouts/flash-messages' %>
         <%= render "public/users/user-info", user: @user %>
         <div class='mt-4'>
           <%= render "post-item", post: @post %>
