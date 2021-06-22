@@ -29,8 +29,8 @@
           </a>
         </div>
 
-        <div>
-          <div class="post-header p-2">
+        <div class='modal__right position-relative'>
+          <header class="post-header p-3 border-bottom">
             <%= link_to user_path(post.user) do %>
               <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
               <span class="font-weight-bold ml-2"><%= post.user.name %></span>
@@ -40,27 +40,39 @@
               <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
             <% end %> </br>
             <%= render_with_hashtags(post.caption) %>
+          </header>
+
+          <div id="post_<%= post.id %>" class='py-3 modal__comments'>
+            <span class="comments">
+              <%= render partial: "public/comments/index", collection: post.comments.includes(:user), as: "comment" %>
+            </span>
           </div>
 
+          <!--いいね・コメント欄-->
+          <div id="post_<%= post.id %>" class='border-top'>
+            <div class='position-relative p-2'>
+              <span class="like-btn">
+                <%= render "public/likes/like-btn", post: post %>
+              </span>
+              <i class="far fa-comment fa-lg pl-2"></i>
+              <span class='comments-count'><%= post.comments.count %>コメント</span>
+              <span class="favorite-btn link__right">
+                <%= render "public/favorites/favorite-btn", post: post %>
+              </span> </br>
+            </div>
+
+          </div>
+          <!---->
+
           <div id="post_<%= post.id %>" class="post-footer">
-            <span class="like-btn">
-              <%= render "public/likes/like-btn", post: post %>
-            </span>
 
-            <i class="far fa-comment comments-count"><%= post.comments.count %>コメント</i>
+            <div class='py-2 text-center'>
+              <%= form_with model:[post, Comment.new] do |f| %>
+                <%= f.text_area :comment, size: "39x2", placeholder: "コメントを追加...", class: 'comment-form border pr-1' %>
+                <%= f.submit "コメントを追加", class: 'link__purple btn__text' %>
+              <% end %>
+            </div>
 
-            <span class="favorite-btn">
-              <%= render "public/favorites/favorite-btn", post: post %>
-            </span> </br>
-
-            <span class="comments">
-              <%= render partial: "public/comments/index", collection: post.comments, as: "comment" %>
-            </span>
-
-            <%= form_with model:[post, Comment.new] do |f| %>
-              <%= f.text_area :comment, size: "38x2", placeholder: "コメントを追加" %>
-              <%= f.submit "投稿" %>
-            <% end %>
           </div>
         </div>
       </div>
