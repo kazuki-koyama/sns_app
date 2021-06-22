@@ -5,6 +5,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
 
+      <!--カルーセル(投稿画像スライド表示)-->
       <div class="d-flex">
         <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
@@ -29,7 +30,9 @@
           </a>
         </div>
 
+        <!--右側サイドインフォ-->
         <div class='modal__right position-relative'>
+          <!--ヘッダー-->
           <header class="post-header p-3 border-bottom">
             <%= link_to user_path(post.user) do %>
               <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
@@ -39,16 +42,19 @@
             <% if post.user == current_user %>
               <%= link_to "", edit_post_path(post), class: "far fa-edit" %>
             <% end %> </br>
-            <%= render_with_hashtags(post.caption) %>
           </header>
 
-          <div id="post_<%= post.id %>" class='py-3 modal__comments'>
+          <!--コメント欄-->
+          <div id="post_<%= post.id %>" class='py-2 modal__comments'>
+            <div class='p-2 mb-2'>
+              <span class='text-break'><%= render_with_hashtags(post.caption) %></span> </br>
+            </div>
             <span class="comments">
               <%= render partial: "public/comments/index", collection: post.comments.includes(:user), as: "comment" %>
             </span>
           </div>
 
-          <!--いいね・コメント欄-->
+          <!--フッター-->
           <div id="post_<%= post.id %>" class='border-top'>
             <div class='position-relative p-2'>
               <span class="like-btn">
@@ -61,21 +67,16 @@
               </span> </br>
             </div>
 
-          </div>
-          <!---->
-
-          <div id="post_<%= post.id %>" class="post-footer">
-
             <div class='py-2 text-center'>
               <%= form_with model:[post, Comment.new] do |f| %>
                 <%= f.text_area :comment, size: "39x2", placeholder: "コメントを追加...", class: 'comment-form border pr-1' %>
                 <%= f.submit "コメントを追加", class: 'link__purple btn__text' %>
               <% end %>
             </div>
-
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
