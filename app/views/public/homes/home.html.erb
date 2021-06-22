@@ -10,10 +10,18 @@
     <div class='home__main d-flex'>
 
       <div class='home__main-contents'>
-        <div class="posts jscroll mt-4">
-          <%= render partial: "public/posts/post-item", collection: @posts, as: "post" %>
-          <%= link_to_next_page @posts, "next >>", class: "next" %>
-        </div>
+        <% if @posts.present? %>
+          <div class="posts jscroll mt-4">
+            <%= render partial: "public/posts/post-item", collection: @posts, as: "post" %>
+            <%= link_to_next_page @posts, "next >>", class: "next" %>
+          </div>
+        <% else %>
+          <div class='text-center mt-5 p-3'>
+            <p>ホームには、自分とフォロー中のユーザーの投稿が表示されます。</p>
+            <p class='mb-5'>好きな投稿・ユーザーを検索して、フォローしてみましょう。</p>
+            <%= link_to '検索', posts_path, class: 'btn__lg btn__purple' %>
+          </div>
+        <% end %>
       </div>
 
       <aside class='home__main-aside h-100'>
