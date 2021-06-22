@@ -11,12 +11,15 @@
           <div class='form-group'>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス', class: 'form-control shadow rounded-pill' %>
           </div>
+
           <div class='form-group'>
             <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'お名前', class: 'form-control shadow rounded-pill' %>
           </div>
+
           <div class='form-group'>
             <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: 'パスワード（6文字以上）', class: 'form-control shadow rounded-pill' %>
           </div>
+
           <div class='form-group'>
             <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", placeholder: 'パスワード確認', class: 'form-control shadow rounded-pill' %>
           </div>
