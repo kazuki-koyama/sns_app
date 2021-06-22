@@ -8,7 +8,9 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.order(created_at: :desc).page(params[:page]).without_count.per(15)
+    # おすすめユーザーから自分とゲストユーザーを除外
+    recommend_users = User.where.not(id: current_user.id).where.not(email: 'guest@example.com')
+    @users = recommend_users.order(created_at: :desc).page(params[:page]).without_count.per(15)
   end
 
   def edit
