@@ -44,6 +44,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    posts_path
+  end
+
   # ゲストユーザー削除とメールアドレス・パスワードの更新を制限
   def ensure_normal_user
     if resource.email == 'guest@example.com'

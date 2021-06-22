@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     registrations: 'public/registrations'
   }
   devise_scope :user do
-    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
   end
 
   # ユーザー機能

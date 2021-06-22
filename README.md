@@ -18,7 +18,6 @@
 空いた時間に投稿画像を見たり、いいねやコメントでユーザー同士のコミュニケーションを楽しむ。
 
 ## 設計書
-ワイヤーフレーム：https://drive.google.com/file/d/1uqAJcbEqFWjU3ZYS3w9qO5_GiKJe--yI/view?usp=sharing
 ER図：https://drive.google.com/file/d/1xP1HCgfS071L_tSanMabtm4FiyVICgKr/view?usp=sharing
 テーブル定義書：https://drive.google.com/file/d/1-Fwcvk-ojLLSU1FFG6s87wZKJyH_wDud/view?usp=sharing
 AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr4Qmqo/view?usp=sharing
