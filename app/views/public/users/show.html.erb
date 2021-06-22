@@ -10,9 +10,7 @@
     <div class='home__main d-flex'>
 
       <div class='home__main-contents'>
-        <% if flash[:notice] %>
-          <p class="text-success"><%= flash[:notice] %></p>
-        <% end %>
+        <%= render 'layouts/flash-messages' %>
         <%= render "user-info", user: @user %>
         <div class="posts jscroll mt-4">
           <%= render partial: "public/posts/post-item", collection: @posts, as: "post" %>

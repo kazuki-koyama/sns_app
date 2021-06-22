@@ -65,6 +65,11 @@ img {
   max-width: inherit;
   width: 815px;
 }
+.modal__comments {
+  height: 398px;
+  overflow-y:auto;    // モーダルウィンドウ内でスクロール表示
+}
+
 // カルーセル
 .carousel-inner {
   background-color: #000;

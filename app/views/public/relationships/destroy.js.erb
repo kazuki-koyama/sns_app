@@ -1,2 +1,2 @@
 $("#user_<%= @user.id %> .follow-btn").html("<%= j(render 'public/users/follow-btn', user: @user) %>");
-$("#followings").html('<%= link_to "フォロー中#{current_user.followings.count}人", user_followings_path(current_user) %>');
+$("#followers").html('<%= link_to "フォロワー#{@user.followers.count}人", user_followings_path(@user) %>');

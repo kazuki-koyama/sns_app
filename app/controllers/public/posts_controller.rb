@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "updated post successfully"
+      redirect_to post_path(@post), notice: "投稿を更新しました"
     else
       render "edit"
     end

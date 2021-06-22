@@ -1,6 +1,6 @@
 <% if @status == 'success' %>
   $(".posts").prepend("<%= j(render "post-item", post: @post) %>");
 <% elsif @status == 'fail' %>
-  alert('error!');
+  alert('before画像とafter画像が正しく選択されているかご確認ください');
 <% end %>
 $("#new-post").modal("hide");

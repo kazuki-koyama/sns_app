@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_users
-    @users = User.all.order(created_at: :desc).first(5)
+    if user_signed_in?
+      recommend_users = User.where.not(id: current_user.id).where.not(email: 'guest@example.com')
+      @users = recommend_users.order(created_at: :desc).first(5)
+    end
   end
 end
