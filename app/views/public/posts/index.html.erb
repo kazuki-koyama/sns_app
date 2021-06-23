@@ -1,0 +1,42 @@
+<% provide(:title, "検索") %>
+
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
+    </div>
+
+    <div class='home__main d-flex'>
+
+      <div class='home__main-contents'>
+        <div class="text-center py-3">
+          <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
+            <% f.submit %>
+          <% end %>
+        </div>
+        <div class="posts jscroll">
+          <%= render partial: "post-item", collection: @posts, as: "post" %>
+          <%= link_to_next_page @posts, "next >>", class: "next" %>
+        </div>
+      </div>
+
+      <aside class='home__main-aside h-100'>
+        <div class='sticky-top'>
+          <div class='d-flex pt-4 pb-2'>
+            <h5 class='main-aside__title mr-auto'>おすすめ</h5>
+            <%= link_to "すべて見る", users_path, class: 'main-aside__link font-weight-bold' %> </br>
+          </div>
+          <%= render partial: "public/shared/main-aside", collection: @users, as: "user" %>
+          <%= render 'public/shared/footer' %>
+        </div>
+      </aside>
+    </div>
+
+    <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
+    </div>
+
+  </div>
+</div>

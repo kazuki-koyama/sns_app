@@ -1,0 +1,83 @@
+.btn {
+
+  &__lg {
+    padding: 8px 28px;
+    text-align: center;
+    border-radius: 20px;
+  }
+
+  &__text {
+    background: none;
+    border: none;
+  }
+
+  &__purple {
+    background-color: #ce9eff;
+    color: #fff;
+    border: 1px solid #ce9eff;
+  }
+  &__purple:hover,
+  &__purple:active {
+    color: #fff;
+    background-color: #bf7fff;
+    border: 1px solid #bf7fff;
+  }
+
+  &__follow {
+    border: 1px solid #0096F6;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 9px;
+    font-size: 14px;
+    color: white;
+    background-color: #0096F6;
+  }
+  &__follow:hover,
+  &__follow:active {
+    color: white;
+    background-color: #1f8eed;
+  }
+  &__unfollow,
+  &__edit-profile {
+    border: 1px solid #DEE2E6;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 9px;
+    font-size: 14px;
+  }
+
+  &__sign-up {
+    border: 1px solid #ce9eff;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 9px;
+    font-size: 14px;
+    color: white;
+    background-color: #ce9eff;
+  }
+}
+
+.link {
+  &__purple {
+    color: #ce9eff;
+  }
+  &__purple:hover,
+  &__purple:active {
+    color: #bf7fff;
+  }
+
+  &__edit {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+  }
+  &__right {
+    position: absolute;
+    top: 4px;
+    right: 15px;
+  }
+}
+
+.heart_red {
+  color: #e54747;
+}

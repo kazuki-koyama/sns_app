@@ -1,0 +1,63 @@
+<% provide(:title, "プロフィールを編集") %>
+
+<div class='home'>
+  <div class='home__box'>
+
+    <div class='home__side-nav'>
+      <%= render 'public/shared/side-nav', user: current_user %>
+    </div>
+
+    <div class='home__main d-flex'>
+      <div class='home__main-contents bg-white'>
+        <%= render "public/shared/error_messages", resource: @user %>
+        <h5 class='p-3'>
+          <%= link_to '←', 'javascript:history.back()', class: 'link__purple' %>
+          <span class='pl-3 font-weight-bold'>プロフィールを編集</span>
+        </h5>
+
+        <div class='px-5'>
+          <%= form_with model: @user, local: true do |f| %>
+            <div class="form-group">
+              <%= f.label :プロフィール写真 %></br>
+              <%= f.attachment_field :profile_image %>
+            </div>
+            <div class="form-group">
+              <%= f.label :メールアドレス %></br>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :アカウント名 %></br>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :自己紹介 %></br>
+              <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: 'form-control' %>
+            </div>
+            <div class="actions text-center py-3">
+              <%= f.submit 'Update', class: 'btn__text link__purple' %>
+            </div>
+          <% end %>
+          <div class='text-center mt-5'>
+            <%= link_to "退会", confirm_unsubscribe_path, class: "text-muted" %>
+          </div>
+        </div>
+      </div>
+
+      <aside class='home__main-aside h-100'>
+        <div class='sticky-top'>
+          <div class='d-flex pt-4 pb-2'>
+            <h5 class='main-aside__title mr-auto'>おすすめ</h5>
+            <%= link_to "すべて見る", users_path, class: 'main-aside__link font-weight-bold' %> </br>
+          </div>
+          <%= render partial: "public/shared/main-aside", collection: @users, as: "user" %>
+          <%= render 'public/shared/footer' %>
+        </div>
+      </aside>
+    </div>
+
+    <div class='home__bottom-nav'>
+      <%= render 'public/shared/bottom-nav', user: current_user %>
+    </div>
+
+  </div>
+</div>

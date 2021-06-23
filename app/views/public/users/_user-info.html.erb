@@ -1,0 +1,38 @@
+<div class="info my-4 border-bottom px-4">
+  <header class='info__header d-flex pt-3 pb-5'>
+
+    <div class='info__profile-image mr-5'>
+      <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle shadow" %>
+    </div>
+    <section id="user_<%= user.id %>">
+      <div class='d-flex align-items-center'>
+        <h2 class='info__user-name mb-0'><%= user.name %></h2>
+        <div class='follow-btn ml-4'>
+          <% if user != current_user %>
+            <%= render "public/users/follow-btn", user: user %>
+          <% else %>
+            <%= link_to "プロフィールを編集", edit_user_path(user), class: "btn__edit-profile" %>
+          <% end %>
+        </div>
+      </div>
+      <ul class='d-flex my-3'>
+        <li class='mr-2'>投稿<%= user.posts.count %>件</li>
+        <li id='followers' class='mr-2'>
+          <%= link_to "フォロワー#{user.followers.count}人", user_followers_path(user) %>
+        </li>
+        <li id="followings">
+          <%= link_to "フォロー中#{user.followings.count}人", user_followings_path(user) %>
+        </li>
+      </ul>
+      <p class='info__caption'><%= user.introduction %></p>
+    </section>
+
+  </header>
+</div>
+
+<% if user == current_user %>
+  <div class="text-center">
+    <%= link_to "投稿", user_path(user), class: "far fa-images mr-4" %>
+    <%= link_to "ブックマーク", favorites_user_path(user), class: "far fa-bookmark" %>
+  </div>
+<% end %>
