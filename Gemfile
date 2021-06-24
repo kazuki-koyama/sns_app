@@ -41,7 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'faker'
 end
 
 group :development do
@@ -74,6 +73,7 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'kaminari','~> 1.2.1'
 gem 'rubocop-airbnb'
 gem 'devise-i18n'
+gem 'faker'
 
 group :production do
   gem 'mysql2'
