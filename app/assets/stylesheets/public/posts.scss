@@ -1,12 +1,23 @@
+.comment-form {
+  width: 100%;
+}
+
 @media screen and (max-width:815px) {
 
   .modal-dialog-fluid {
-    // max-width: 65%;
+    max-width: 100% !important;
+  }
+  .modal {
+    &__right {
+      display: none;
+    }
   }
 
-  .modal {
-    // &__right {
-    //   display: none;
-    // }
+  #carouselIndicators {
+    width: 100%;
+  }
+  .carousel-item {
+    width: 100% !important;
+    max-height: 80vh;
   }
 }

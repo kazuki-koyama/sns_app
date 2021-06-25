@@ -3,8 +3,9 @@ Admin.create!(
   password: ENV['ADMIN_PASS']
 )
 
+Faker::Config.locale = :en
 20.times do |n|
-  email = "test#{n + 1}@test.com"
+  email = "sample@user#{n + 1}.com"
   name = Faker::Name.name
   password = "password"
   User.create!(

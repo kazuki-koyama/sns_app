@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).without_count.per(10)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).without_count.per(10)
   end
 
   def index

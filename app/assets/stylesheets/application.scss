@@ -60,14 +60,18 @@ img {
   color: red;
 }
 
-// modal window
+// modal window(投稿詳細)
 .modal-dialog-fluid {
   max-width: inherit;
   width: 815px;
 }
 .modal__comments {
   height: 398px;
-  overflow-y:auto;    // モーダルウィンドウ内でスクロール表示
+  overflow-y:auto;    // modal window内でスクロール表示
+}
+#modal__new-post {
+  max-width: inherit;
+  width: 690px;
 }
 
 // カルーセル
@@ -135,11 +139,24 @@ img {
 
 @media screen and (max-width:690px) {
   .home {
-    &__side-nav {
-      display: none;
-    }
     &__main {
       width: 100%;
     }
+    &__side-nav {
+      display: none;
+    }
+    &__main-contents {
+      min-width: 100%;
+    }
+  }
+
+  .post-images li,
+  .post-images img {
+    width: 100%;
+  }
+
+  // modal window(新規投稿)
+  #modal__new-post {
+    max-width: 80% !important;
   }
 }
