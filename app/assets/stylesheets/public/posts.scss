@@ -2,10 +2,14 @@
   width: 100%;
 }
 
+#carouselIndicators {
+  width: 480px;
+}
+
 @media screen and (max-width:815px) {
 
   .modal-dialog-fluid {
-    max-width: 100% !important;
+    max-width: 480px !important;
   }
   .modal {
     &__right {
@@ -13,11 +17,30 @@
     }
   }
 
+  .carousel__outer {
+    width: 480px;
+    margin: 0 auto;
+  }
+  .carousel-item {
+    width: 100% !important;
+    max-height: 85vh;
+  }
+}
+
+@media screen and (max-width:480px) {
+
+  .modal-dialog-fluid {
+    max-width: 100% !important;
+  }
+
   #carouselIndicators {
+    width: 100%;
+  }
+  .carousel__outer {
     width: 100%;
   }
   .carousel-item {
     width: 100% !important;
-    max-height: 80vh;
+    max-height: 85vh;
   }
 }
