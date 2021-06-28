@@ -115,7 +115,7 @@ RSpec.describe "Users", type: :system do
 
   describe "プロフィールを編集する" do
     let(:user) { create(:user) }
-    let(:another_user) { create(:user) }
+    let(:bob) { create(:bob) }
 
     context "編集に成功する場合" do
       before do
@@ -124,18 +124,18 @@ RSpec.describe "Users", type: :system do
         find(".btn__edit-profile").click
       end
 
-      # it "編集後、プロフィール画面に遷移する。プロフィール画面には編集後の情報が表示されている。" do
-      #   fill_in "メールアドレス", with: "userupdate@example.com"
-      #   fill_in "アカウント名", with: "アカウント名更新"
-      #   fill_in "自己紹介", with: "自己紹介を更新しました。"
-      #   click_button "Update"
-      #   aggregate_failures do
-      #     expect(current_path).to eq "/users/#{user.id}"
-      #     expect(find('.info__user-name').text).to eq "アカウント名更新"
-      #     expect(find('.info__caption').text).to eq "自己紹介を更新しました。"
-      #     expect(page).to have_content("プロフィールを更新しました")
-      #   end
-      # end
+      it "編集後、プロフィール画面に遷移する。プロフィール画面には編集後の情報が表示されている。" do
+        fill_in "user[email]", with: "userupdate@example.com"
+        fill_in "user[name]", with: "アカウント名更新"
+        fill_in "user[introduction]", with: "自己紹介を更新しました。"
+        click_button "Update"
+        aggregate_failures do
+          expect(current_path).to eq "/users/#{user.id}"
+          expect(find('.info__user-name').text).to eq "アカウント名更新"
+          expect(find('.info__caption').text).to eq "自己紹介を更新しました。"
+          expect(page).to have_content("プロフィールを更新しました")
+        end
+      end
     end
 
     context "編集に失敗する場合" do
@@ -146,9 +146,9 @@ RSpec.describe "Users", type: :system do
       end
 
       it "内容を入力し、'更新する'ボタンを選択するとエラーメッセージが表示される。" do
-        fill_in "アカウント名", with: "あ" * 26
-        fill_in "自己紹介", with: "自己紹介を更新しました。"
-        fill_in "メールアドレス", with: "userupdate@example.com"
+        fill_in "user[email]", with: "userupdate@example.com"
+        fill_in "user[name]", with: "あ" * 26
+        fill_in "user[introduction]", with: "自己紹介を更新しました。"
         click_button "Update"
         aggregate_failures do
           expect(page).to have_content("名前は25文字以内で入力してください")
@@ -159,32 +159,32 @@ RSpec.describe "Users", type: :system do
     context '他人のプロフィール画面の場合' do
       it 'プロフィールを編集リンクがない' do
         sign_in_as(user)
-        visit user_path(another_user.id)
+        visit user_path(bob.id)
         expect(page).not_to have_content 'プロフィールを編集'
       end
     end
   end
 
-  # describe "おすすめユーザー一覧画面" do
-  #   let(:user) { create(:user) }
-  #   before do
-  #     sign_in_as(user)
-  #     visit '/home'
-  #   end
+  describe "おすすめユーザー一覧画面" do
+    let(:user) { create(:user) }
+    before do
+      sign_in_as(user)
+      visit '/home'
+    end
 
-  #   it "ホーム画面に'おすすめユーザー一覧'リンクがある。" do
-  #     aggregate_failures do
-  #       expect(current_path).to eq "/home"
-  #       expect(page).to have_content("すべて見る")
-  #     end
-  #   end
+    it "ホーム画面に'おすすめユーザー一覧'リンクがある。" do
+      aggregate_failures do
+        expect(current_path).to eq "/home"
+        expect(page).to have_content("すべて見る")
+      end
+    end
 
-  #   it "'おすすめユーザー一覧'リンクを選択するとおすすめユーザー一覧画面に遷移する。" do
-  #     find(".main-aside__link").click
-  #     aggregate_failures do
-  #       expect(current_path).to eq "/users"
-  #       expect(page).to have_content("おすすめ")
-  #     end
-  #   end
-  # end
+    it "'おすすめユーザー一覧'リンクを選択するとおすすめユーザー一覧画面に遷移する。" do
+      find(".main-aside__link").click
+      aggregate_failures do
+        expect(current_path).to eq "/users"
+        expect(page).to have_content("おすすめ")
+      end
+    end
+  end
 end
