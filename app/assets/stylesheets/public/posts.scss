@@ -6,6 +6,13 @@
   width: 480px;
 }
 
+.modal-close {
+  z-index: 2;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
 @media screen and (max-width:815px) {
 
   .modal-dialog-fluid {
