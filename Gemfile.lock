@@ -399,6 +399,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-airbnb
   sass-rails (~> 5.0)
+  selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
