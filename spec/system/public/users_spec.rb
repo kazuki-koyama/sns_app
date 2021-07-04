@@ -1,99 +1,137 @@
 require "rails_helper"
 
-RSpec.describe "System Users", type: :system do
-  let(:user) { create(:user) }
-
+RSpec.describe "Users", type: :system do
   describe "ユーザー新規登録" do
     context "新規登録できる場合" do
-      it "内容を入力し、'新規登録する'ボタンを選択するとトップ画面に遷移する。" do
-        user = build(:user)
+      it '新規ユーザー登録画面に遷移する' do
         visit root_path
-        click_link "会員登録"
-        fill_in "ニックネーム(2〜10文字)", with: user.nickname
+        click_link '新規登録'
+        expect(page).to have_current_path '/users/sign_up'
+      end
+
+      it "内容を入力し、'新規登録'ボタンを選択するとホーム画面に遷移する。" do
+        user = build(:user)
+        visit new_user_registration_path
+        fill_in "お名前", with: user.name
         fill_in "メールアドレス", with: user.email
-        fill_in "パスワード", with: user.password
-        fill_in "確認用パスワード", with: user.password_confirmation
+        fill_in "パスワード（6文字以上）", with: user.password
+        fill_in "パスワード確認", with: user.password_confirmation
         aggregate_failures do
           expect do
-          click_button "新規登録する"
+          click_button "新規登録"
           end.to change(User, :count).by(1)
-          expect(current_path).to eq "/"
-          expect(page).to have_content("アカウント登録が完了しました")
+          expect(current_path).to eq "/home"
+          expect(page).to have_content("新規登録が完了しました")
         end
       end
     end
 
     context "新規登録できない場合" do
-      it "内容を入力し、'新規登録する'ボタンを選択するとエラーメッセージが表示される。" do
+      it "内容を入力し、'新規登録'ボタンを選択するとエラーメッセージが表示される。" do
         user = build(:user)
-        visit root_path
-        click_link "会員登録"
-        fill_in "ニックネーム(2〜10文字)", with: "あ"
+        visit new_user_registration_path
+        fill_in "お名前", with: "あ"
         fill_in "メールアドレス", with: user.email
-        fill_in "パスワード", with: user.password
-        fill_in "確認用パスワード", with: user.password_confirmation
+        fill_in "パスワード（6文字以上）", with: user.password
+        fill_in "パスワード確認", with: user.password_confirmation
         aggregate_failures do
           expect do
-          click_button "新規登録する"
+          click_button "新規登録"
           end.to change(User, :count).by(0)
-          expect(current_path).to eq "/sign_up"
-          expect(page).to have_content("エラーが発生したため ユーザ は保存されませんでした。")
-          expect(page).to have_content("ニックネームは2文字以上で入力してください")
+          expect(current_path).to eq "/users/sign_up"
+          expect(page).to have_content("名前は2文字以上で入力してください")
         end
       end
+    end
+  end
+
+  describe "ログイン" do
+    let(:user) { create(:user) }
+    context "成功する場合" do
+      it 'ログイン画面に遷移する' do
+        visit root_path
+        click_link 'ログイン'
+        expect(page).to have_current_path '/users/sign_in'
+      end
+
+      it "内容を入力し、'ログイン'ボタンを選択するとホーム画面に遷移する。" do
+        visit new_user_session_path
+        fill_in "メールアドレス", with: user.email
+        fill_in "パスワード", with: user.password
+        click_button "ログイン"
+        aggregate_failures do
+          expect(current_path).to eq "/home"
+          expect(page).to have_content("ログインしました")
+        end
+      end
+    end
+
+    context "失敗する場合" do
+      it "内容を入力し、'ログイン'ボタンを選択するとエラーメッセージが表示される。" do
+        visit new_user_session_path
+        fill_in "メールアドレス", with: user.email
+        fill_in "パスワード", with: "111111"
+        click_button "ログイン"
+        aggregate_failures do
+          expect(current_path).to eq "/users/sign_in"
+          expect(page).to have_content("メールアドレスまたはパスワードが違います。")
+        end
+      end
+    end
+  end
+
+  describe "ログアウト" do
+    let(:user) { create(:user) }
+    it "ログアウトしたらトップ画面に遷移する。" do
+      sign_in_as(user)
+      visit '/home'
+      find(".logout_test").click
+      aggregate_failures do
+        expect(current_path).to eq "/"
+        expect(page).to have_link("ログイン")
+        expect(page).to have_content("ログアウトしました。")
+      end
+    end
+  end
+
+  describe 'ゲストログイン' do
+    let(:user) { create(:user) }
+    it 'トップページからゲストログインできる' do
+      visit root_path
+      click_link 'ゲストログイン（閲覧用）'
+      expect(page).to have_current_path '/home'
     end
   end
 
   describe "ユーザー詳細画面" do
-    before do
-      sign_in_as(user)
-      find(".mypage-link").click
-    end
-
-    it "登録したユーザー名が正確に表示されている。" do
-      aggregate_failures do
-        expect(current_path).to eq "/users/#{user.id}"
-        expect(find('.username').text).to eq "ユーザー"
-        expect(page).to have_content("プロフィールを編集する")
-      end
+    let(:user) { create(:user) }
+    it "プロフィール編集リンクがある。" do
+    sign_in_as(user)
+    visit user_path(user.id)
+    expect(page).to have_content("プロフィールを編集")
     end
   end
 
-  describe "ユーザー情報を編集する" do
+  describe "プロフィールを編集する" do
+    let(:user) { create(:user) }
+    let(:another_user) { create(:user) }
+
     context "編集に成功する場合" do
       before do
         sign_in_as(user)
-        find(".mypage-link").click
-        find(".profile-edit-btn").click
+        visit user_path(user.id)
+        find(".btn__edit-profile").click
       end
 
-      it "編集画面に登録したユーザー情報が表示されている。" do
-        aggregate_failures do
-          expect(current_path).to eq "/users/#{user.id}/edit"
-          expect(page).to have_field "ニックネーム(2〜10文字の範囲)", with: "ユーザー"
-          expect(page).to have_field "メールアドレス", with: user.email
-        end
-      end
-
-      it "編集後、ユーザー詳細画面に遷移する。ユーザー詳細画面には編集後の情報が表示されている。" do
-        fill_in "ニックネーム(2〜10文字の範囲)", with: "ユーザー名更新"
+      it "編集後、プロフィール画面に遷移する。プロフィール画面には編集後の情報が表示されている。" do
+        fill_in "アカウント名", with: "アカウント名更新"
         fill_in "自己紹介", with: "自己紹介を更新しました。"
         fill_in "メールアドレス", with: "userupdate@example.com"
-        click_button "更新する"
-        # ユーザー詳細画面の確認
+        click_button "Update"
         aggregate_failures do
           expect(current_path).to eq "/users/#{user.id}"
-          expect(find('.username').text).to eq "ユーザー名更新"
-          expect(find('.biography-text').text).to eq "自己紹介を更新しました。"
-        end
-
-        find(".profile-edit-btn").click
-        # 再度ユーザー編集画面の確認
-        aggregate_failures do
-          expect(current_path).to eq "/users/#{user.id}/edit"
-          expect(page).to have_field "ニックネーム(2〜10文字の範囲)", with: "ユーザー名更新"
-          expect(page).to have_field "自己紹介", with: "自己紹介を更新しました。"
-          expect(page).to have_field "メールアドレス", with: "userupdate@example.com"
+          expect(find('.info__user-name').text).to eq "アカウント名更新"
+          expect(find('.info__caption').text).to eq "自己紹介を更新しました。"
         end
       end
     end
@@ -101,50 +139,49 @@ RSpec.describe "System Users", type: :system do
     context "編集に失敗する場合" do
       before do
         sign_in_as(user)
-        find(".mypage-link").click
-        find(".profile-edit-btn").click
+        visit user_path(user.id)
+        find(".btn__edit-profile").click
       end
 
       it "内容を入力し、'更新する'ボタンを選択するとエラーメッセージが表示される。" do
-        fill_in "ニックネーム(2〜10文字の範囲)", with: "あ" * 11
+        fill_in "アカウント名", with: "あ" * 26
         fill_in "自己紹介", with: "自己紹介を更新しました。"
         fill_in "メールアドレス", with: "userupdate@example.com"
-        click_button "更新する"
+        click_button "Update"
         aggregate_failures do
-          expect(page).to have_content("ユーザー情報編集")
-          expect(page).to have_content("ニックネームは10文字以内で入力してください")
+          expect(page).to have_content("名前は25文字以内で入力してください")
         end
+      end
+    end
+
+    context '他人のプロフィール画面の場合' do
+      it 'プロフィールを編集リンクがない' do
+        sign_in_as(user)
+        visit user_path(another_user.id)
+        expect(page).not_to have_content 'プロフィールを編集'
       end
     end
   end
 
-  describe "ユーザー一覧画面" do
+  describe "おすすめユーザー一覧画面" do
+    let(:user) { create(:user) }
     before do
-      create :alice
-      create :bob
       sign_in_as(user)
+      visit '/home'
     end
 
-    it "トップ画面に'ユーザー一覧'リンクがある。" do
+    it "ホーム画面に'おすすめユーザー一覧'リンクがある。" do
       aggregate_failures do
-        expect(current_path).to eq "/"
-        expect(page).to have_content("ユーザー一覧")
+        expect(current_path).to eq "/home"
+        expect(page).to have_content("すべて見る")
       end
     end
 
-    it "'ユーザー一覧'リンクを選択するとユーザー一覧画面に遷移する。" do
-      find(".user-index-link").click
+    it "'おすすめユーザー一覧'リンクを選択するとおすすめユーザー一覧画面に遷移する。" do
+      find(".main-aside__link").click
       aggregate_failures do
         expect(current_path).to eq "/users"
-        expect(page).to have_content("ユーザー一覧")
-      end
-    end
-
-    it "ユーザー一覧画面に登録されたユーザー名が表示されている。" do
-      find(".user-index-link").click
-      aggregate_failures do
-        expect(page).to have_content("Alice")
-        expect(page).to have_content("Bob")
+        expect(page).to have_content("おすすめ")
       end
     end
   end
