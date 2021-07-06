@@ -4,7 +4,6 @@
       <td class='w-25 text-center'>
         <%= link_to user_path(user) do %>
           <%= image_tag user.profile_image_url, format: "jpg", size: "35x35", fallback: "no-image-icon.jpg", size: "35x35", class: "rounded-circle shadow" %>
-          <%#= attachment_image_tag user, :profile_image, format: "jpg", size: "35x35", fallback: "no-image-icon.jpg", size: "35x35", class: "rounded-circle shadow" %>
         <% end %>
       </td>
       <td class='w-25'><%= link_to user.name, user_path(user) %></td>

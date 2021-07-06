@@ -10,11 +10,12 @@
     <div class='home__main d-flex'>
 
       <div class='home__main-contents'>
-        <div class="text-center py-3">
+        <div class="text-center py-3 position-relative">
           <%= form_with url: search_path, method: :get, local: true do |f| %>
             <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
             <% f.submit %>
           <% end %>
+          <p class='tool-tip'>ハッシュタグは先頭に"#"をつけて検索</p>
         </div>
         <div class="posts jscroll">
           <%= render partial: "post-item", collection: @posts, as: "post" %>

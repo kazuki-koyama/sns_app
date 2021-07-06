@@ -13,6 +13,14 @@
   right: 16px;
 }
 
+.tool-tip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+}
+
 @media screen and (max-width:815px) {
 
   .modal-dialog-fluid {
