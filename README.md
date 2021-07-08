@@ -23,12 +23,15 @@
 空いた時間に投稿画像を見たり、ユーザー同士でコミュニケーションを取ったりして、楽しむ。
 
 ## 設計書
-ER図：https://drive.google.com/file/d/1xP1HCgfS071L_tSanMabtm4FiyVICgKr/view?usp=sharing
-テーブル定義書：https://drive.google.com/file/d/1-Fwcvk-ojLLSU1FFG6s87wZKJyH_wDud/view?usp=sharing
-AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr4Qmqo/view?usp=sharing
+ER図：https://drive.google.com/file/d/1xP1HCgfS071L_tSanMabtm4FiyVICgKr/view?usp=sharing  
+テーブル定義書：https://drive.google.com/file/d/1-Fwcvk-ojLLSU1FFG6s87wZKJyH_wDud/view?usp=sharing  
+AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr4Qmqo/view?usp=sharing  
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1bsTQFALETAqbOK16tfoBhx-Z_YkoiaoQ10dfZgg9UGY/edit?usp=sharing
+
+## インフラ構成図
+![AWS Design (updated)](https://user-images.githubusercontent.com/78887569/124768698-d86a2480-df73-11eb-8afe-1db74e6369d3.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
