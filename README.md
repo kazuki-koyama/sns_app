@@ -31,7 +31,7 @@ AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr
 https://docs.google.com/spreadsheets/d/1bsTQFALETAqbOK16tfoBhx-Z_YkoiaoQ10dfZgg9UGY/edit?usp=sharing
 
 ## インフラ構成図
-![AWS Design (updated)](https://user-images.githubusercontent.com/78887569/125149638-1a15ed80-e175-11eb-90c1-6f38e0804dbf.png)
+![AWS Design (updated)](https://user-images.githubusercontent.com/78887569/125356627-6c3b5680-e3a1-11eb-825c-96363c527a40.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
