@@ -41,7 +41,7 @@
 
     <div class='py-2 text-center'>
       <%= form_with model:[post, Comment.new] do |f| %>
-        <%= f.text_area :comment, size: "72x2", placeholder: "コメントを追加...", class: 'comment-form border pr-1' %>
+        <%= f.text_area :comment, placeholder: "コメントを追加...", class: 'comment-form border pr-1' %>
         <%= f.submit "コメントを追加", class: 'link__purple btn__text' %>
       <% end %>
     </div>

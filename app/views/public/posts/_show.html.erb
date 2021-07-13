@@ -1,12 +1,13 @@
 <div class="modal-dialog modal-dialog-centered modal-dialog-fluid mx-auto">
   <div class="modal-content">
-    <div class="modal-body p-0">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+
+    <div class="modal-body p-0 position-relative">
+    <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true" class='text-white'>&times;</span>
+    </button>
 
       <!--カルーセル(投稿画像スライド表示)-->
-      <div class="d-flex">
+      <div class="d-flex carousel__outer">
         <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
             <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
@@ -32,8 +33,12 @@
 
         <!--右側サイドインフォ-->
         <div class='modal__right position-relative'>
+
           <!--ヘッダー-->
           <header class="post-header p-3 border-bottom">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <%= link_to user_path(post.user) do %>
               <%= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
               <span class="font-weight-bold ml-2"><%= post.user.name %></span>
@@ -47,7 +52,9 @@
           <!--コメント欄-->
           <div id="post_<%= post.id %>" class='py-2 modal__comments'>
             <div class='p-2 mb-2'>
-              <span class='text-break'><%= render_with_hashtags(post.caption) %></span> </br>
+              <span class='text-break'>
+                <%= render_with_hashtags(safe_join(post.caption.split("\n"), tag(:br))) %>
+              </span> </br>
             </div>
             <span class="comments">
               <%= render partial: "public/comments/index", collection: post.comments.includes(:user), as: "comment" %>

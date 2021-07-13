@@ -1,12 +1,53 @@
+.comment-form {
+  width: 100%;
+}
+
+#carouselIndicators {
+  width: 480px;
+}
+
+.modal-close {
+  z-index: 2;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
 @media screen and (max-width:815px) {
 
   .modal-dialog-fluid {
-    // max-width: 65%;
+    max-width: 480px !important;
+  }
+  .modal {
+    &__right {
+      display: none;
+    }
   }
 
-  .modal {
-    // &__right {
-    //   display: none;
-    // }
+  .carousel__outer {
+    width: 480px;
+    margin: 0 auto;
+  }
+  .carousel-item {
+    width: 100% !important;
+    max-height: 85vh;
+  }
+}
+
+@media screen and (max-width:480px) {
+
+  .modal-dialog-fluid {
+    max-width: 100% !important;
+  }
+
+  #carouselIndicators {
+    width: 100%;
+  }
+  .carousel__outer {
+    width: 100%;
+  }
+  .carousel-item {
+    width: 100% !important;
+    max-height: 85vh;
   }
 }

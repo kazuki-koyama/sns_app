@@ -1,13 +1,13 @@
 <div class="info my-4 border-bottom px-4">
-  <header class='info__header d-flex pt-3 pb-5'>
+  <header class='info__header d-flex pt-3 pb-4'>
 
     <div class='info__profile-image mr-5'>
       <%= attachment_image_tag user, :profile_image, format: "jpg", size: "150x150", fallback: "no-image-icon.jpg", size: "150x150", class: "rounded-circle shadow" %>
     </div>
-    <section id="user_<%= user.id %>">
-      <div class='d-flex align-items-center'>
-        <h2 class='info__user-name mb-0'><%= user.name %></h2>
-        <div class='follow-btn ml-4'>
+    <section id="user_<%= user.id %>" class='info__header-box'>
+      <div class='info__user-header'>
+        <h2 class='info__user-name'><%= user.name %></h2>
+        <div class='info__edit-btn follow-btn'>
           <% if user != current_user %>
             <%= render "public/users/follow-btn", user: user %>
           <% else %>

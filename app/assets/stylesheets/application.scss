@@ -60,14 +60,14 @@ img {
   color: red;
 }
 
-// modal window
+// modal window(投稿詳細)
 .modal-dialog-fluid {
   max-width: inherit;
   width: 815px;
 }
 .modal__comments {
-  height: 398px;
-  overflow-y:auto;    // モーダルウィンドウ内でスクロール表示
+  height: 648px;
+  overflow-y:auto;    // modal window内でスクロール表示
 }
 
 // カルーセル
@@ -76,7 +76,7 @@ img {
 }
 .carousel-item {
   width: 480px;
-  height: 600px;
+  height: 850px;
   position: relative;
 }
 .carousel-item img {
@@ -85,7 +85,6 @@ img {
   top: 50%;
   transform: translateY(-50%);
 }
-
 
 // 全体レイアウト
 .home {
@@ -135,11 +134,26 @@ img {
 
 @media screen and (max-width:690px) {
   .home {
-    &__side-nav {
-      display: none;
-    }
     &__main {
       width: 100%;
     }
+    &__side-nav {
+      display: none;
+    }
+    &__main-contents {
+      min-width: 100%;
+    }
+  }
+
+  .post-images li,
+  .post-images img {
+    width: 100%;
+    min-height: 100%;
+  }
+
+  // modal window(新規投稿)
+  #modal__new-post {
+    max-width: 80% !important;
+    margin: 0 auto;
   }
 }
