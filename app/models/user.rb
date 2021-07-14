@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :comments,  dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  attachment :profile_image, destroy: false, store: 'before_image'
+  # attachment :profile_image, destroy: false, store: 'before_image'
+  attachment :profile_image, destroy: false
 
   validates :name, length: { minimum: 2, maximum: 25 }, uniqueness: true
   validates :introduction, length: { maximum: 140 }
