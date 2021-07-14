@@ -7,8 +7,8 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :hashtags, through: :hashtag_posts
 
-  attachment :before_image
-  attachment :after_image
+  attachment :before_image, store: 'before_image'
+  attachment :after_image, store: 'after_image'
 
   validates :before_image, presence: true
   validates :after_image, presence: true

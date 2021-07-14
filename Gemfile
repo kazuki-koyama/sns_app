@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'bullet'
 end
 
 group :development do
@@ -50,7 +51,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'bullet'
 end
 
 group :test do
@@ -58,6 +58,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -67,6 +68,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'refile-s3', github: 'refile/refile-s3', ref: '768d60d4e5e5e6a00a874767018ff8e31b1da3cd'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
