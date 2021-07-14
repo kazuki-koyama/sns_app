@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :hashtags, through: :hashtag_posts
 
   attachment :before_image, store: 'before_image'
-  attachment :after_imaage, store: 'before_image'
+  attachment :after_image, store: 'after_image'
   # attachment :before_image
   # attachment :after_image
 
