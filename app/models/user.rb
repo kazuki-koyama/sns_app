@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :likes,     dependent: :destroy
   has_many :comments,  dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+  
+  # カラム名のプレフィックスを付与し、S3へアップロード
   attachment :profile_image, destroy: false, store: 'profile_image'
-  # attachment :profile_image, destroy: false
 
   validates :name, length: { minimum: 2, maximum: 25 }, uniqueness: true
   validates :introduction, length: { maximum: 140 }
@@ -70,5 +70,10 @@ class User < ApplicationRecord
     if keyword != nil
       User.where('name LIKE(?)' , "%#{keyword}%")
     end
+  end
+  
+  # ユーザープロフィール画像(リサイズ後)の保存先S3のURLを取得
+  def profile_image_url
+    "https://change-prod-img-resized.s3-ap-northeast-1.amazonaws.com/profile_image/#{self.profile_image_id}-resized."
   end
 end

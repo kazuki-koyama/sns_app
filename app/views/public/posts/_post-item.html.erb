@@ -17,6 +17,8 @@
   <!--画像-->
   <%= link_to post_path(post), remote: true do %>
     <ul class="post-images d-flex align-items-center border-top border-bottom">
+      <li><%= image_tag post.before_image_url %></li>
+      <li><%= image_tag post.after_image_url %></li>
       <li><%= attachment_image_tag(post, :before_image) %></li>
       <li><%= attachment_image_tag(post, :after_image) %></li>
     </ul>
