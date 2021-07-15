@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :hashtags, through: :hashtag_posts
 
+  # カラム名のプレフィックスを付与し、S3へアップロード
   attachment :before_image, store: 'before_image'
   attachment :after_image, store: 'after_image'
 
@@ -78,5 +79,13 @@ class Post < ApplicationRecord
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
       post.hashtags << tag
     end
+  end
+
+  # 投稿画像(リサイズ後)の保存先S3のURLを取得
+  def before_image_url
+    "https://change-prod-img-resized.s3-ap-northeast-1.amazonaws.com/before_image/#{self.before_image_id}-resized."
+  end
+  def after_image_url
+    "https://change-prod-img-resized.s3-ap-northeast-1.amazonaws.com/after_image/#{self.after_image_id}-resized."
   end
 end

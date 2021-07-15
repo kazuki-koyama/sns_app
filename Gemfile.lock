@@ -60,7 +60,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.2)
@@ -192,7 +192,7 @@ GEM
     mysql2 (0.5.3)
     netrc (0.11.0)
     nio4r (2.5.7)
-    nokogiri (1.11.6)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -376,7 +376,7 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   bullet
   byebug
-  capybara (>= 2.15)
+  capybara
   coffee-rails (~> 4.2)
   devise
   devise-i18n
@@ -399,6 +399,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-airbnb
   sass-rails (~> 5.0)
+  selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

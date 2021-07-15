@@ -6,8 +6,7 @@ aws = {
   bucket: ENV['AWS_S3_BUCKET_NAME']
 }
 Refile.cache = Refile::S3.new(prefix: 'cache', **aws)
-#Refile.store = Refile::S3.new(prefix: 'store', **aws)	# S3バケットにstore/フォルダを作成(ファイルはその配下に保存)
-
+# 画像の種類(カラム)により、prefixを付与
 Refile.backends['before_image'] = Refile::S3.new(prefix: 'before_image', **aws)
 Refile.backends['after_image'] = Refile::S3.new(prefix: 'after_image', **aws)
 Refile.backends['profile_image'] = Refile::S3.new(prefix: 'profile_image', **aws)

@@ -33,6 +33,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to post_path(@post), notice: "投稿を更新しました"
     else
       render "edit"

@@ -27,3 +27,7 @@ $(document).on('turbolinks:load', function() {
     loadingHtml: '読み込み中'
   });
 });
+
+$(function(){
+  setTimeout("$('.time-limit').fadeOut('slow')", 2000)
+});
