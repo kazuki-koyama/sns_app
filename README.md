@@ -22,16 +22,37 @@
 ### 主な利用シーン
 空いた時間に投稿画像を見たり、ユーザー同士でコミュニケーションを取ったりして、楽しむ。
 
-## 設計書
-ER図：https://drive.google.com/file/d/1xP1HCgfS071L_tSanMabtm4FiyVICgKr/view?usp=sharing <br>
-テーブル定義書：https://drive.google.com/file/d/1-Fwcvk-ojLLSU1FFG6s87wZKJyH_wDud/view?usp=sharing <br>
-AP詳細設計書：https://drive.google.com/file/d/13DpUT-667_CFKr_x4KTFyCTXYFr4Qmqo/view?usp=sharing <br>
-
 ## 機能一覧
-https://docs.google.com/spreadsheets/d/1bsTQFALETAqbOK16tfoBhx-Z_YkoiaoQ10dfZgg9UGY/edit?usp=sharing
+- ユーザー側
+  - ユーザー認証（新規登録/退会/ログイン/ログアウト）
+  - マイページ(閲覧/編集)
+  - ゲストログイン
+  - 投稿（画像アップロード/一覧表示/詳細表示/編集/削除）
+  - いいね
+  - コメント
+  - ブックマーク（作成/削除/一覧表示）
+  - フォロー（フォローする/フォローを外す/フォロー・フォロワーの一覧表示）
+  - ハッシュタグ
+  - 検索（ユーザー名検索/ハッシュタグ検索）
+- 管理者側
+  - ユーザー認証（ログイン/ログアウト）
+  - ユーザー管理（一覧表示/詳細表示/編集）
+
+その他詳細は[こちら](https://docs.google.com/spreadsheets/d/1bsTQFALETAqbOK16tfoBhx-Z_YkoiaoQ10dfZgg9UGY/edit?usp=sharing)をご覧ください。
+
+## 取り入れた技術
+- Webサーバーを冗長化し、ALBで負荷を分散
+- 画像をLambdaでリサイズし、S3に保存（画像の種類によりそれぞれリサイズ幅を設定）
+- Github Actionsで自動デプロイ
+- RuboCopで静的解析を実施
+- RSpecでテストを実施
+- bulletでN+1問題を検出し、解消
 
 ## インフラ構成図
-![AWS Design (updated)](https://user-images.githubusercontent.com/78887569/125356627-6c3b5680-e3a1-11eb-825c-96363c527a40.png)
+![AWS_architecture](https://user-images.githubusercontent.com/78887569/126017078-803267c7-5ba1-421c-8170-041de9db6328.png)
+
+## ER図
+![ER_change](https://user-images.githubusercontent.com/78887569/126017003-b27a71e7-40a9-48a6-821f-6a69c8bf8c4b.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
