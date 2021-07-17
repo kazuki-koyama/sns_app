@@ -40,7 +40,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
             <%= link_to user_path(post.user) do %>
-              <%= image_tag post.user.profile_image_url, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
+              <%= image_tag post.user.profile_image_url, format: "jpg", size: "32x32", class: "rounded-circle" %>
               <span class="font-weight-bold ml-2"><%= post.user.name %></span>
             <% end %>
             <span class="small text-muted"> - <%= time_ago_in_words(post.created_at) %>前</span>

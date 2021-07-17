@@ -1,7 +1,7 @@
 <div class='position-relative px-2'>
   <% comment_user = comment.user %>
   <%= link_to user_path(comment_user), class: "user_#{comment_user.id}" do %>
-    <%= image_tag comment_user.profile_image_url, format: "jpg", size: "22x22", fallback: "no-image.jpg", size: "22x22", class: "rounded-circle" %>
+    <%= image_tag comment_user.profile_image_url, format: "jpg", size: "22x22", class: "rounded-circle" %>
   	<span class="font-weight-bold pr-1"><%= comment_user.name %></span>
   <% end %>
   <span class='text-break'><%= comment.comment %></span>
