@@ -4,6 +4,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.profile_image_id == "" or @user.profile_image_id == nil
+      @user.profile_image_url = "no-image-icon.jpg"
+    end
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).without_count.per(10)
   end
 
