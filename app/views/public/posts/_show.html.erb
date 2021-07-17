@@ -16,11 +16,9 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <%= image_tag post.before_image_url %>
-              <%#= attachment_image_tag(post, :before_image) %>
             </div>
             <div class="carousel-item">
               <%= image_tag post.after_image_url %>
-              <%#= attachment_image_tag(post, :after_image) %>
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
@@ -43,7 +41,6 @@
             </button>
             <%= link_to user_path(post.user) do %>
               <%= image_tag post.user.profile_image_url, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
-              <%#= attachment_image_tag post.user, :profile_image, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "rounded-circle" %>
               <span class="font-weight-bold ml-2"><%= post.user.name %></span>
             <% end %>
             <span class="small text-muted"> - <%= time_ago_in_words(post.created_at) %>前</span>

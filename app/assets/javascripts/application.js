@@ -20,10 +20,27 @@
 //= require turbolinks
 //= require_tree .
 
+// 無限スクロール
 $(document).on('turbolinks:load', function() {
   $('.jscroll').jscroll({
     contentSelector: '.jscroll',
     nextSelector: 'a.next',
     loadingHtml: '読み込み中'
   });
+});
+
+// ツールチップ
+$(document).on('turbolinks:load', function() {
+  $('.tool-tip').hide();
+  $('input[name="keyword"]').focus(function() {
+    $(".tool-tip").fadeToggle("fast", "linear");
+  });
+  $('input[name="keyword"]').focusout(function() {
+    $(".tool-tip").fadeToggle("fast", "linear");
+  });
+});
+
+// フラッシュメッセージのフェイドアウト
+$(function(){
+  setTimeout("$('.time-limit').fadeOut('slow')", 2000)
 });

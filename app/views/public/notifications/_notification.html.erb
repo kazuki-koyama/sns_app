@@ -5,7 +5,6 @@
   <span>
     <%= link_to user_path(visitor) do %>
       <%= image_tag visitor.profile_image_url, format: "jpg", size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "icon_mini rounded-circle shadow" %>
-      <%#= attachment_image_tag(visitor, :profile_image, size: "32x32", fallback: "no-image-icon.jpg", size: "32x32", class: "icon_mini rounded-circle shadow") %>
       <strong><%= visitor.name %></strong>
     <% end %>
     さんが

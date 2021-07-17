@@ -9,9 +9,9 @@ RSpec.describe "Posts", type: :system do
       visit '/home'
     end
 
-    context "投稿に成功する場合" do
-      it "ホーム画面に'New Post'リンクがある。" do
-        expect(page).to have_content("New Post")
+    context "投稿に成功する場合", js: true do
+      before do
+        find(".side-nav__post-btn").click
       end
 
       it "'New Post'リンクを押すと投稿作成ウィンドウが表示される。" do
@@ -20,32 +20,30 @@ RSpec.describe "Posts", type: :system do
       end
 
       it "内容を入力し、'投稿'ボタンを押すと投稿が追加される。" do
-        find(".side-nav__post-btn").click
-        # post = build(:post)
-        # find('input[type="file"]').click
-        attach_file 'before_image', "#{Rails.root}/db/fixtures/icon0-min.jpg"
-        attach_file 'after_image', "#{Rails.root}/db/fixtures/icon1-min.jpg"
-        fill_in "caption", with: "キャプションです。"
+        attach_file 'post[before_image]', "#{Rails.root}/db/fixtures/icon0-min.jpg"
+        attach_file 'post[after_image]', "#{Rails.root}/db/fixtures/icon1-min.jpg"
+        fill_in "post[caption]", with: "キャプションです。"
         aggregate_failures do
           expect do
           click_button "投稿"
+          sleep(10)
           end.to change(user.posts, :count).by(1)
-          expect(page).to have_content("キャプションです。")
         end
       end
     end
 
-    context "作成に失敗する場合" do
+    context "作成に失敗する場合", js: true do
       before do
         find(".side-nav__post-btn").click
       end
 
       it "内容を入力し、'投稿'ボタンを押すとアラートメッセージが表示される。" do
-        attach_file 'before_image', "#{Rails.root}/db/fixtures/icon0-min.jpg"
-        fill_in "caption", with: "キャプションです。"
+        attach_file 'post[before_image]', "#{Rails.root}/db/fixtures/icon0-min.jpg"
+        fill_in "post[caption]", with: "キャプションです。"
         aggregate_failures do
           expect do
           click_button "投稿"
+          sleep(10)
           end.to change(user.posts, :count).by(0)
           expect(page.driver.browser.switch_to.alert.text).to eq 'before画像とafter画像が正しく選択されているかご確認ください'
           page.driver.browser.switch_to.alert.dismiss
@@ -71,7 +69,7 @@ RSpec.describe "Posts", type: :system do
 
       it "内容を編集し、'Update'ボタンを押すと編集内容が反映されている。" do
         find(".link__edit").click
-        fill_in "caption", with: "キャプションの更新"
+        fill_in "post[caption]", with: "キャプションの更新"
         click_button "Update"
         aggregate_failures do
           expect(current_path).to eq "/posts/1"
@@ -81,13 +79,12 @@ RSpec.describe "Posts", type: :system do
     end
 
     context "編集が失敗する場合" do
-      it "内容を編集し、'Update'ボタンを押すとエラーメッセージが表示される。" do
+      it "内容を編集し、'Update'ボタンを押すと投稿編集画面にリダイレクトされる。" do
         find(".link__edit").click
-        fill_in "caption", with: "あ" * 301
+        fill_in "post[caption]", with: "あ" * 301
         click_button "Update"
         aggregate_failures do
-          expect(current_path).to eq "/posts/1/edit"
-          expect(page).to have_content("キャプションは300文字以内で入力してください")
+          expect(current_path).to eq "/posts/1"
         end
       end
     end
@@ -101,11 +98,10 @@ RSpec.describe "Posts", type: :system do
       find(".link__edit").click
     end
 
-    it "'削除'ボタンを押し確認ダイアログを承認すると、投稿が削除される。" do
+    it "'削除'ボタンを押すと、投稿が削除される。" do
       aggregate_failures do
         expect do
         click_on "削除"
-        page.driver.browser.switch_to.alert.accept
         end.to change(user.posts, :count).by(-1)
         expect(current_path).to eq "/posts"
       end
