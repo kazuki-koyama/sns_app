@@ -43,7 +43,7 @@ $(document).on('turbolinks:load', function() {
 // 投稿画像プレビュー
 $(document).on('turbolinks:load', function() {
   $('#before_image_preview').on('change', function (e) {
-    let reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function (e) {
         $("#before_image_preview").attr('src', e.target.result);
     }
