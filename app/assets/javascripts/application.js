@@ -40,6 +40,26 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
+// 投稿画像プレビュー
+$(document).on('turbolinks:load', function() {
+  $('#before_image_preview').on('change', function (e) {
+    let reader = new FileReader();
+    reader.onload = function (e) {
+        $("#before_image_preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+$(document).on('turbolinks:load', function() {
+  $('#after_image_preview').on('change', function (e) {
+    let reader = new FileReader();
+    reader.onload = function (e) {
+        $("#after_image_preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+
 // フラッシュメッセージのフェイドアウト
 $(function(){
   setTimeout("$('.time-limit').fadeOut('slow')", 2000)
