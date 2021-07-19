@@ -42,19 +42,19 @@ $(document).on('turbolinks:load', function() {
 
 // 投稿画像プレビュー
 $(document).on('turbolinks:load', function() {
-  $('#before_image_preview').on('change', function (e) {
+  $('#post_before_image').on('change', function (e) {
     var reader = new FileReader();
     reader.onload = function (e) {
-        $("#before_image_preview").attr('src', e.target.result);
+      $("#before_image_preview").attr('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });
 });
 $(document).on('turbolinks:load', function() {
-  $('#after_image_preview').on('change', function (e) {
+  $('#post_after_image').on('change', function (e) {
     var reader = new FileReader();
     reader.onload = function (e) {
-        $("#after_image_preview").attr('src', e.target.result);
+      $("#after_image_preview").attr('src', e.target.result);
     }
     reader.readAsDataURL(e.target.files[0]);
   });
