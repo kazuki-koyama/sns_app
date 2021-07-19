@@ -52,7 +52,7 @@ $(document).on('turbolinks:load', function() {
 });
 $(document).on('turbolinks:load', function() {
   $('#after_image_preview').on('change', function (e) {
-    let reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function (e) {
         $("#after_image_preview").attr('src', e.target.result);
     }
