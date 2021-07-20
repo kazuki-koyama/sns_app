@@ -21,6 +21,10 @@
   font-size: 10px;
 }
 
+.search-field::placeholder {
+  font-size: 12px;
+}
+
 @media screen and (max-width:815px) {
 
   .modal-dialog-fluid {

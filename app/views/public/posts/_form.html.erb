@@ -37,3 +37,22 @@
 
 <!-- モーダルウィンドウ(新規投稿) -->
 <div id="new-post" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"></div>
+
+<script>
+// 投稿画像のプレビュー表示
+$('#post_before_image').on('change', function (e) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    $("#before_image_preview").attr('src', e.target.result);
+  }
+  reader.readAsDataURL(e.target.files[0]);
+});
+
+$('#post_after_image').on('change', function (e) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    $("#after_image_preview").attr('src', e.target.result);
+  }
+  reader.readAsDataURL(e.target.files[0]);
+});
+</script>

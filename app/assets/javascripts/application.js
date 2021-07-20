@@ -40,44 +40,6 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-// 投稿画像プレビュー
-$(document).on('turbolinks:load', function() {
-  $('#post_before_image').on('change', function (e) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      $("#before_image_preview").attr('src', e.target.result);
-    }
-    reader.readAsDataURL(e.target.files[0]);
-  });
-});
-
-$(document).on('turbolinks:load', function() {
-  $('#post_after_image').on('change', function (e) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      $("#after_image_preview").attr('src', e.target.result);
-    }
-    reader.readAsDataURL(e.target.files[0]);
-  });
-});
-
-// $(document).on('turbolinks:load', function() {
-//   function readURL(input) {
-//     if (input.files && input.files[0]) {
-//       var reader = new FileReader();
-
-//       reader.onload = function (e) {
-//         $('#before_image_preview').attr('src', e.target.result);
-//       }
-//       reader.readAsDataURL(input.files[0]);
-//     }
-//   }
-
-//   $("#post_before_image").change(function(){
-//     readURL(this);
-//   });
-// });
-
 // フラッシュメッセージのフェイドアウト
 $(function(){
   setTimeout("$('.time-limit').fadeOut('slow')", 2000)

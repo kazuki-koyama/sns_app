@@ -12,7 +12,7 @@
       <div class='home__main-contents'>
         <div class="text-center py-3 position-relative">
           <%= form_with url: search_path, method: :get, local: true do |f| %>
-            <%= f.text_field :keyword, placeholder: "\uf002 検索", class: "text-center fas py-1" %>
+            <%= f.text_field :keyword, placeholder: "\uf002 ユーザー名/ハッシュタグを検索", class: "text-center fas py-1 search-field" %>
             <% f.submit %>
           <% end %>
           <p class='tool-tip'>ハッシュタグは先頭に"#"をつけて検索</p>
