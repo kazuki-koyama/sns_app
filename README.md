@@ -8,11 +8,11 @@ URL：https://change.golf/
 ```
 【サンプルユーザーアカウント】
 　　メールアドレス： sample@user1.com
-　　パスワード    ： password
+　　パスワード   ： password
 
 【管理者アカウント】
 　　メールアドレス： admin@example.com
-　　パスワード    ： admin_example
+　　パスワード   ： admin_example
 
 *別途「ゲストログイン機能」（ワンクリックでログイン可能な機能）も実装していますので、ぜひそちらもご利用ください。
 ```
