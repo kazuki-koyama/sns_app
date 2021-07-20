@@ -1,5 +1,14 @@
-<% if @status == 'success' %>
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function add_image() {
+  console.log('start');
+  await sleep(3*1000)
   $(".posts").prepend("<%= j(render "post-item", post: @post) %>");
+  console.log('end');
+};
+<% if @status == 'success' %>
+  add_image();
 <% elsif @status == 'fail' %>
   alert('before画像とafter画像が正しく選択されているかご確認ください');
 <% end %>
