@@ -5,8 +5,6 @@ class Public::SearchesController < ApplicationController
     elsif (params[:keyword]).include?('#')
       @posts = Hashtag.search(params[:keyword]).order('created_at DESC').page(params[:page]).without_count.per(10)
       @hashtag = (params[:keyword])
-    elsif (params[:keyword]).include?('#') && @posts.nil?
-      @hashtag = (params[:keyword])
     else
       @users = User.search(params[:keyword]).order('created_at DESC').page(params[:page]).without_count.per(10)
       @keyword = (params[:keyword])
