@@ -66,6 +66,7 @@ Changeは、ビフォーアフター写真とともに努力の過程や結果�
 
 ## 設計書
 ### 【インフラ構成図】
+[インフラ設計書](https://docs.google.com/spreadsheets/d/11GX5pZ12aw8rzk07TCqfJrf5uqRr_ZCOEBOtM-doVU8/edit?usp=sharing)
 ![AWS_architecture](https://user-images.githubusercontent.com/78887569/126017078-803267c7-5ba1-421c-8170-041de9db6328.png)
 
 ### 【ER図】
