@@ -4,7 +4,7 @@
 ![screen_sample](https://user-images.githubusercontent.com/78887569/123628116-b4a92f00-d84d-11eb-836f-71edfe719d9e.png)
 
 URL：https://change.golf/
-※22:00~翌8:00はサーバーを停止しています
+  ※22:00~翌8:00はサーバーを停止しています
 
 ```
 【サンプルユーザーアカウント】
